@@ -6,19 +6,20 @@ const Header = (): JSX.Element => {
     return (
         <AppBar position="fixed" color="inherit">
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography sx={{fontFamily: 'Noize Sport Free Vertion', fontSize: '2.5rem'}}>SportPulse</Typography>
+                <Typography sx={{ fontFamily: 'Noize Sport Free Vertion', fontSize: '2.5rem' }}>SportPulse</Typography>
                 <Box sx={{ display: 'flex', gap: '20px' }}>
                     <Button color="inherit"
                         sx={{
                             borderRadius: '20px',
                             padding: '10px 20px',
-                            transition: '0.3s',
+                            transition: '0.4s',
                             fontFamily: 'Montserrat',
                             fontWeight: 'bold',
                             fontSize: '1.2rem',
+                            backgroundColor: '#00A4CC',
+                            color: '#fff',
                             '&:hover': {
-                                backgroundColor: '#686666',
-                                color: '#fff',
+                                backgroundColor: '#007BAC',
                             },
                         }}>
                         Home
@@ -27,14 +28,15 @@ const Header = (): JSX.Element => {
                         sx={{
                             borderRadius: '20px',
                             padding: '10px 20px',
-                            transition: '0.3s',
+                            transition: '0.4s',
                             fontFamily: 'Montserrat',
                             fontWeight: 'bold',
                             fontSize: '1.2rem',
+                            backgroundColor: '#00A4CC',
+                            color: '#fff',
                             '&:hover': {
-                                backgroundColor: '#686666',
-                                color: '#fff',
-                            }
+                                backgroundColor: '#007BAC',
+                            },
                         }}>
                         Events
                     </Button>
@@ -42,14 +44,15 @@ const Header = (): JSX.Element => {
                         sx={{
                             borderRadius: '20px',
                             padding: '10px 20px',
-                            transition: '0.3s',
+                            transition: '0.4s',
                             fontFamily: 'Montserrat',
                             fontWeight: 'bold',
                             fontSize: '1.2rem',
+                            backgroundColor: '#00A4CC',
+                            color: '#fff',
                             '&:hover': {
-                                backgroundColor: '#686666',
-                                color: '#fff',
-                            }
+                                backgroundColor: '#007BAC',
+                            },
                         }}>
                         Live Scores
                     </Button>
