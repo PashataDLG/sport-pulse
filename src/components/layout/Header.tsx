@@ -6,7 +6,7 @@ const Header = (): JSX.Element => {
     return (
         <AppBar position="fixed" color="inherit">
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography sx={{fontFamily: 'Facon', fontSize: '1.8rem'}}>SportPulse</Typography>
+                <Typography sx={{fontFamily: 'Noize Sport Free Vertion', fontSize: '2.5rem'}}>SportPulse</Typography>
                 <Box sx={{ display: 'flex', gap: '20px' }}>
                     <Button color="inherit"
                         sx={{
