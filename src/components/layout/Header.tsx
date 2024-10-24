@@ -1,25 +1,34 @@
 import { AppBar, Toolbar, Typography, Button, Box, Drawer, useMediaQuery, useTheme, List, ListItem, ListItemText, IconButton } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from "react";
+import { MouseEvent, KeyboardEvent, useState } from "react";
 
 const Header = (): JSX.Element => {
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
-    const handleDrawerToggle = () => {
-        setDrawerOpen(!drawerOpen);
+    const handleDrawerToggle = (event: MouseEvent | KeyboardEvent, reason?: string) => {
+        if (drawerOpen && reason === 'backdropClick') {
+            console.log(reason);
+            setDrawerOpen(false);
+        } else if (!drawerOpen) {
+            setDrawerOpen(true);
+        }
     };
 
     const drawer: JSX.Element = (
-        <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
-            <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+        <Drawer
+            anchor="top"
+            open={drawerOpen}
+            onClose={(event, reason) => handleDrawerToggle(event as MouseEvent | KeyboardEvent, reason)}
+        >
+            <Box sx={{ textAlign: 'center' }}>
                 <List>
                     {['Home', 'Events', 'Live Scores'].map((text, index) => (
                         <ListItem
                             key={text}
                             sx={{
-                                '& .MuiTypography-root': {
+                                '& .MuiListItemText-primary': {
                                     fontFamily: 'Montserrat',
                                     fontWeight: 'bolder',
                                     fontSize: '1.3rem',
@@ -46,22 +55,21 @@ const Header = (): JSX.Element => {
                         fontFamily: 'Noize Sport Free Vertion',
                         fontSize: { xs: '1.8rem', sm: '2.0rem', md: '2.2rem', lg: '2.5rem' },
                     }}>
-                    SportPulse</Typography>
-                {isMobile ?
-                    (
-                        <>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                edge="start"
-                                onClick={handleDrawerToggle}
-                                sx={{ mr: 2 }}>
-                                <MenuIcon />
-                            </IconButton>
-                            {drawer}
-                        </>
-                    )
-                    :
+                    SportPulse
+                </Typography>
+                {isMobile ? (
+                    <>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerToggle}
+                            sx={{ mr: 2 }}>
+                            <MenuIcon />
+                        </IconButton>
+                        {drawer}
+                    </>
+                ) : (
                     <Box sx={{ display: 'flex', gap: '20px' }}>
                         <Button color="inherit"
                             sx={{
@@ -69,7 +77,7 @@ const Header = (): JSX.Element => {
                                 padding: '10px 20px',
                                 transition: '0.4s',
                                 fontFamily: 'Montserrat',
-                                fontWeight: 'bold',
+                                fontWeight: 'bolder',
                                 fontSize: '1.2rem',
                                 backgroundColor: '#00A4CC',
                                 color: '#fff',
@@ -85,7 +93,7 @@ const Header = (): JSX.Element => {
                                 padding: '10px 20px',
                                 transition: '0.4s',
                                 fontFamily: 'Montserrat',
-                                fontWeight: 'bold',
+                                fontWeight: 'bolder',
                                 fontSize: '1.2rem',
                                 backgroundColor: '#00A4CC',
                                 color: '#fff',
@@ -101,7 +109,7 @@ const Header = (): JSX.Element => {
                                 padding: '10px 20px',
                                 transition: '0.4s',
                                 fontFamily: 'Montserrat',
-                                fontWeight: 'bold',
+                                fontWeight: 'bolder',
                                 fontSize: '1.2rem',
                                 backgroundColor: '#00A4CC',
                                 color: '#fff',
@@ -111,7 +119,8 @@ const Header = (): JSX.Element => {
                             }}>
                             Live Scores
                         </Button>
-                    </Box>}
+                    </Box>
+                )}
             </Toolbar>
         </AppBar>
     );
