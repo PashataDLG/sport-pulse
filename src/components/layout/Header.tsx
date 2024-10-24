@@ -12,11 +12,24 @@ const Header = (): JSX.Element => {
     };
 
     const drawer: JSX.Element = (
-        <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
+        <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
             <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
                 <List>
                     {['Home', 'Events', 'Live Scores'].map((text, index) => (
-                        <ListItem component={Button} key={text}>
+                        <ListItem
+                            key={text}
+                            sx={{
+                                '& .MuiTypography-root': {
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: 'bolder',
+                                    fontSize: '1.3rem',
+                                    '&:hover': {
+                                        backgroundColor: '#007BAC',
+                                        color: '#fff',
+                                    },
+                                }
+                            }}
+                        >
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
