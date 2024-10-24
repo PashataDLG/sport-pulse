@@ -1,51 +1,13 @@
 import { AppBar, Toolbar, Typography, Button, Box, Drawer, useMediaQuery, useTheme, List, ListItem, ListItemText, IconButton } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { MouseEvent, KeyboardEvent, useState } from "react";
+import { useAppContext } from "../../context/appContext";
+import NavDrawer from "../common/NavDrawer";
 
 const Header = (): JSX.Element => {
-    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+    const {isDrawerOpen, setIsDrawerOpen, handleDrawerToggle} = useAppContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
-
-    const handleDrawerToggle = (event: MouseEvent | KeyboardEvent, reason?: string) => {
-        if (drawerOpen && reason === 'backdropClick') {
-            console.log(reason);
-            setDrawerOpen(false);
-        } else if (!drawerOpen) {
-            setDrawerOpen(true);
-        }
-    };
-
-    const drawer: JSX.Element = (
-        <Drawer
-            anchor="top"
-            open={drawerOpen}
-            onClose={(event, reason) => handleDrawerToggle(event as MouseEvent | KeyboardEvent, reason)}
-        >
-            <Box sx={{ textAlign: 'center' }}>
-                <List>
-                    {['Home', 'Events', 'Live Scores'].map((text, index) => (
-                        <ListItem
-                            key={text}
-                            sx={{
-                                '& .MuiListItemText-primary': {
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 'bolder',
-                                    fontSize: '1.3rem',
-                                    '&:hover': {
-                                        backgroundColor: '#007BAC',
-                                        color: '#fff',
-                                    },
-                                }
-                            }}
-                        >
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </Box>
-        </Drawer>
-    );
 
     return (
         <AppBar position="fixed" color="inherit">
@@ -67,7 +29,7 @@ const Header = (): JSX.Element => {
                             sx={{ mr: 2 }}>
                             <MenuIcon />
                         </IconButton>
-                        {drawer}
+                        <NavDrawer />
                     </>
                 ) : (
                     <Box sx={{ display: 'flex', gap: '20px' }}>
