@@ -12,16 +12,13 @@ const Home = (): JSX.Element => {
                 <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Box
                         sx={{
-                            margin: '0',
-                            padding: '0',
                             width: '100%',
                             height: '70vh',
-                            position: 'relative',
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'center',
+                            justifyContent: 'space-around',
                             alignItems: 'center',
-                            alignContent: 'space-around',
+                            position: 'relative',
                         }}>
                         <Box sx={{
                             position: 'absolute',
@@ -34,40 +31,33 @@ const Home = (): JSX.Element => {
                             variant="h4"
                             component="h1"
                             sx={{
-                                position: 'relative',
                                 color: 'white',
                                 textShadow: '1px 1px 4px rgba(0, 0, 0, 0.7)',
                                 zIndex: 2,
                                 fontFamily: 'Radley Sans',
                                 fontSize: '3.5rem',
                                 textAlign: 'center',
+                                mt: 2, 
+                                mb: 1
                             }}
                         >
                             The best sport <br /> event website!
                         </Typography>
-                        <Box sx={{
-                            width: '40%',
-                            borderBottom: '4px solid white',
-                            borderRadius: '20px',
-                            margin: '20px auto 0',
-                            zIndex: 2
-                        }} />
                         <Typography component="p" sx={{
                             textAlign: 'center',
-                            marginTop: '20px',
                             fontSize: '1.3rem',
                             color: 'white',
                             fontFamily: 'Montserrat',
-                            zIndex: 2
+                            zIndex: 2,
+                            mb: 2
                         }}>
-                            Experience the thrill of live sports events <br /> and stay updated  with real-time scores and updates. <br /> Join us and be part of the excitement!
+                            Experience the thrill of live sports events <br /> and stay updated with real-time scores and updates. <br /> Join us and be part of the excitement!
                         </Typography>
                         <Button color='inherit' sx={{
                             backgroundColor: '#00A4CC',
                             '&:hover': {
                                 backgroundColor: '#007BAC',
                             },
-                            top: '7%',
                             padding: '12px 30px',
                             borderRadius: '20px',
                             color: 'white',
@@ -78,12 +68,13 @@ const Home = (): JSX.Element => {
                             fontFamily: 'Montserrat',
                             fontWeight: 'bold',
                             fontSize: '1.1rem',
+                            mt: 1
                         }}>
                             JOIN NOW!
                         </Button>
-                    </Box >
+                    </Box>
                 </div>
-            </Parallax >
+            </Parallax>
             <Box sx={{ py: 4 }}>
                 {Array.from(new Array(10)).map((_, index) => (
                     <Box key={index} sx={{ margin: 'auto', maxWidth: 600, p: 2, borderBottom: '1px solid #ccc' }}>
@@ -96,7 +87,6 @@ const Home = (): JSX.Element => {
                     </Box>
                 ))}
             </Box>
-
         </Container>
     );
 };
