@@ -5,7 +5,7 @@ const Home = (): JSX.Element => {
     return (
         <Container maxWidth={false} sx={{ width: '100vw', padding: '0 !important' }}>
             <Parallax
-                bgImage='/AdobeStock_286933595_Preview.jpeg'
+                bgImage='https://t3.ftcdn.net/jpg/06/07/07/80/360_F_607078002_yMGIjR7oCK8fvvR8qD8hZ5EsXK7V8M7I.jpg'
                 strength={500}
                 bgImageStyle={{ height: '100%', width: '100%' }}
             >
