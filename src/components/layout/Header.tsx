@@ -1,11 +1,10 @@
-import { AppBar, Toolbar, Typography, Button, Box, Drawer, useMediaQuery, useTheme, List, ListItem, ListItemText, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, useMediaQuery, useTheme, IconButton } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import { MouseEvent, KeyboardEvent, useState } from "react";
 import { useAppContext } from "../../context/appContext";
 import NavDrawer from "../common/NavDrawer";
 
 const Header = (): JSX.Element => {
-    const {isDrawerOpen, setIsDrawerOpen, handleDrawerToggle} = useAppContext();
+    const { handleDrawerToggle } = useAppContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
