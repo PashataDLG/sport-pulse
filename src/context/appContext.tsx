@@ -29,7 +29,6 @@ export const АppContextProvider = ({ children }: AppContextProviderProps) => {
 
     const handleDrawerToggle = (event: Event, reason?: string) => {
         if (isDrawerOpen && reason === 'backdropClick') {
-            console.log(reason);
             setIsDrawerOpen(false);
         } else if (!isDrawerOpen) {
             setIsDrawerOpen(true);
