@@ -1,11 +1,18 @@
 import { Parallax } from 'react-parallax';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Banner from '../common/Banner';
+import UpcomingEvents from '../common/UpcomingEvents';
+
+const events = [
+    { id: 1, name: 'Football Match', date: '2024-10-30', time: '19:00' },
+    { id: 2, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
+  ];
 
 const Home = (): JSX.Element => {
     return (
         <Container maxWidth={false} sx={{ width: '100vw', padding: '0 !important' }}>
             <Banner />
+            <UpcomingEvents events={events} />
             <Box sx={{ py: 4 }}>
                 {Array.from(new Array(10)).map((_, index) => (
                     <Box key={index} sx={{ margin: 'auto', maxWidth: 600, p: 2, borderBottom: '1px solid #ccc' }}>
