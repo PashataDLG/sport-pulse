@@ -14,6 +14,8 @@ interface UpcomingEventsProps {
 }
 
 const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
+
+	
 	return (
 		<Box sx={{ width: 350, bgcolor: 'background.paper', borderRadius: '16px', overflow: 'hidden', boxShadow: 3, display: 'flex', flexDirection: 'column', gap: '1px' }}>
 			<Typography sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText', fontFamily: 'Montserrat' }} variant="h6" component="div">
@@ -32,7 +34,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 						gap: '5px'
 					}}>
 
-						<Typography>Bolton vs Peterboro</Typography>
+						<Typography>Bolton</Typography>
 
 						<Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvxxrv1448808301.png' />
 						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -48,6 +50,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 							</Typography>
 						</Box>
 						<Avatar src='https://www.thesportsdb.com/images/media/team/badge/tyxsvt1424033035.png' />
+						<Typography>Peterboro</Typography>
 					</ListItem>
 				))}
 			</List>
