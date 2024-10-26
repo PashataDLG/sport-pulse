@@ -13,7 +13,7 @@ const Header = (): JSX.Element => {
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Box
                     component="img"
-                    src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://pulse.africa/wp-content/uploads/2021/10/Pulse_sports__.png"
+                    src="/src/assets/Pulse_sports__.png"
                     alt="SportPulse Logo"
                     sx={{ width: 250, height: 60 }}
                 />
