@@ -33,7 +33,7 @@ const Banner: React.FC = (): JSX.Element => {
                             color: 'white',
                             textShadow: '1px 1px 4px rgba(0, 0, 0, 0.7)',
                             zIndex: 2,
-                            fontFamily: 'Radley Sans',
+                            fontFamily: 'Bebas Neue',
                             fontSize: '3.5rem',
                             textAlign: 'center',
                             mt: 2,
