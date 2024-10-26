@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box, useMediaQuery, useTheme, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, useMediaQuery, useTheme, IconButton, Avatar } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAppContext } from "../../context/appContext";
 import NavDrawer from "../common/NavDrawer";
@@ -11,13 +11,12 @@ const Header = (): JSX.Element => {
     return (
         <AppBar position="fixed" color="inherit">
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography
-                    sx={{
-                        fontFamily: 'Noize Sport Free Vertion',
-                        fontSize: { xs: '1.8rem', sm: '2.0rem', md: '2.2rem', lg: '2.5rem' },
-                    }}>
-                    SportPulse
-                </Typography>
+                <Box
+                    component="img"
+                    src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://pulse.africa/wp-content/uploads/2021/10/Pulse_sports__.png"
+                    alt="SportPulse Logo"
+                    sx={{ width: 250, height: 60 }}
+                />
                 {isMobile ? (
                     <>
                         <IconButton
