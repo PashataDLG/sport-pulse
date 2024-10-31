@@ -21,6 +21,7 @@ const Standings: React.FC = () => {
             display: 'flex',
             flexDirection: 'column',
             bgcolor: 'background.paper',
+            width: '400px'
         }}>
             <Typography variant="h4" gutterBottom sx={{
                 fontFamily: 'Montserrat',

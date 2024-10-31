@@ -153,6 +153,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
             display: 'flex',
             flexDirection: 'column',
             bgcolor: 'background.paper',
+            width: '400px'
         }}>
             <Typography variant="h4" gutterBottom sx={{
                 fontFamily: 'Montserrat',
