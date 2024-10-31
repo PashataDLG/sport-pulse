@@ -26,7 +26,7 @@ const Home = (): JSX.Element => {
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
-        <Container maxWidth={false} sx={{ width: '100vw', padding: '0 !important' }}>
+        <Container maxWidth={false} sx={{ width: '100%', padding: '0 !important' }}>
             <Banner />
             {isMobile ?
                 <Box sx={{
@@ -36,7 +36,8 @@ const Home = (): JSX.Element => {
                     alignItems: 'center',
                     flexDirection: 'column',
                     padding: '10px',
-                    gap: '40px'
+                    gap: '40px',
+                    width: '100%',
                 }}>
                     <UpcomingEvents events={events} />
                     <LiveEvents events={liveEvents} />
