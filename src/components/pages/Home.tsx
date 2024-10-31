@@ -1,8 +1,8 @@
-import { Parallax } from 'react-parallax';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Container, useMediaQuery } from '@mui/material';
 import Banner from '../common/Banner';
 import UpcomingEvents from '../common/UpcomingEvents';
 import LiveEvents from '../common/LiveEvents';
+import theme from '../../theme/theme';
 
 const events = [
     { id: 1, name: 'Football Match', date: '2024-10-30', time: '19:00' },
@@ -21,6 +21,8 @@ const liveEvents = [
     { id: 5, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
     { id: 6, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
 ];
+
+
 
 const Home = (): JSX.Element => {
     return (

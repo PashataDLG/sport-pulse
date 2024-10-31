@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, List, ListItem, ListItemText, Typography, Avatar } from '@mui/material';
+import { Box, Button, List, ListItem, Typography, Avatar } from '@mui/material';
 import dateFormatter from '../../utils/dateFormatter';
 
 interface Event {
