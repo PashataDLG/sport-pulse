@@ -14,31 +14,44 @@ const events = [
 ];
 
 const liveEvents = [
-    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 2, awayTeamGoals: 0, time: '43:54' }, 
-    { id: 2, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
-    { id: 3, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
-    { id: 4, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
-    { id: 5, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
-    { id: 6, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' }, 
+    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 2, awayTeamGoals: 0, time: '43:54' },
+    { id: 2, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' },
+    { id: 3, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' },
+    { id: 4, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' },
+    { id: 5, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' },
+    { id: 6, homeTeam: 'Liverpool', awayTeam: 'Chelsea', homeTeamGoals: 1, awayTeamGoals: 0, time: '43:54' },
 ];
 
-
-
 const Home = (): JSX.Element => {
+    const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
+
     return (
         <Container maxWidth={false} sx={{ width: '100vw', padding: '0 !important' }}>
             <Banner />
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                justifyItems: 'center',
-                padding: '10px',
-                gap: '40px'
+            {isMobile ?
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    justifyItems: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    padding: '10px',
+                    gap: '40px'
                 }}>
-                    <UpcomingEvents events={ events } />
-                    <LiveEvents events={ liveEvents } />
-            </Box>
-
+                    <UpcomingEvents events={events} />
+                    <LiveEvents events={liveEvents} />
+                </Box>
+                :
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    justifyItems: 'center',
+                    padding: '10px',
+                    gap: '40px'
+                }}>
+                    <UpcomingEvents events={events} />
+                    <LiveEvents events={liveEvents} />
+                </Box>}
         </Container >
     );
 };
