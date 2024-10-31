@@ -85,6 +85,9 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
             </Box >
     ) : (
     <Box sx={{ width: 350, bgcolor: 'background.paper', borderRadius: '16px', overflow: 'hidden', boxShadow: 3, display: 'flex', flexDirection: 'column', gap: '1px', maxHeight: '80vh' }}>
+        <Typography sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText', fontFamily: 'Montserrat', textAlign: 'center', fontWeight: 'bold' }} variant="h6" component="div">
+                    Live Events
+                </Typography>
         <List aria-label="upcoming sports events" sx={{
             overflow: 'auto',
             display: 'flex',
