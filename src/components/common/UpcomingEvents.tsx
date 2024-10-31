@@ -15,9 +15,9 @@ interface UpcomingEventsProps {
 
 const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 
-	
+
 	return (
-		<Box sx={{ width: 350, bgcolor: 'background.paper', borderRadius: '16px', overflow: 'hidden', boxShadow: 3, display: 'flex', flexDirection: 'column', gap: '1px' }}>
+		<Box sx={{ width: 350, bgcolor: 'background.paper', borderRadius: '16px', overflow: 'hidden', boxShadow: 3, display: 'flex', flexDirection: 'column', gap: '1px', maxHeight: '80vh' }}>
 			<Typography sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText', fontFamily: 'Montserrat' }} variant="h6" component="div">
 				Upcoming Events
 			</Typography>
@@ -40,8 +40,10 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 						<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 							<Typography variant="body2" color="text.secondary" sx={{
 								fontFamily: 'Montserrat',
+								fontSize: '1.1rem',
 							}}>
 								{event.time}
+
 							</Typography>
 							<Typography variant="body2" color="text.secondary" sx={{
 								fontFamily: 'Montserrat',
@@ -54,32 +56,40 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 					</ListItem>
 				))}
 			</List>
-			<Button sx={{
-				borderRadius: '20px',
-				fontFamily: 'Montserrat',
-				fontWeight: 'bolder',
-				fontSize: '1rem',
-				backgroundColor: '#00A4CC',
-				color: '#fff',
-				'&:hover': {
-					backgroundColor: '#007BAC',
-				},
+			<Box sx={{
+				display: 'flex',
+				flexDirection: 'row',
+				justifyContent: 'center',
+				gap: '20px',
+				paddingBottom: '10px',
 			}}>
-				View All Events
-			</Button>
-			<Button sx={{
-				borderRadius: '20px',
-				fontFamily: 'Montserrat',
-				fontWeight: 'bolder',
-				fontSize: '1rem',
-				backgroundColor: '#00A4CC',
-				color: '#fff',
-				'&:hover': {
-					backgroundColor: '#007BAC',
-				},
-			}}>
-				Buy Tickets
-			</Button>
+				<Button sx={{
+					borderRadius: '20px',
+					fontFamily: 'Montserrat',
+					fontWeight: 'bolder',
+					fontSize: '1rem',
+					backgroundColor: '#00A4CC',
+					color: '#fff',
+					'&:hover': {
+						backgroundColor: '#007BAC',
+					},
+				}}>
+					View All Events
+				</Button>
+				<Button sx={{
+					borderRadius: '20px',
+					fontFamily: 'Montserrat',
+					fontWeight: 'bolder',
+					fontSize: '1rem',
+					backgroundColor: '#00A4CC',
+					color: '#fff',
+					'&:hover': {
+						backgroundColor: '#007BAC',
+					},
+				}}>
+					Buy Tickets
+				</Button>
+			</Box>
 		</Box>
 	);
 };
