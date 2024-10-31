@@ -54,11 +54,19 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
 					</ListItem>
 				))}
 			</List>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                paddingBottom: '5px',
+				paddingRight: '5px',
+				paddingLeft: '5px',
+            }}>
 			<Button sx={{
 				borderRadius: '20px',
 				fontFamily: 'Montserrat',
 				fontWeight: 'bolder',
-				fontSize: '1rem',
+				fontSize: '0.9rem',
 				backgroundColor: '#00A4CC',
 				color: '#fff',
                 maxWidth: '70%',
@@ -69,6 +77,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
 			}}>
 				View All Live Events
 			</Button>
+            </Box>
 		</Box>
 	);
 };

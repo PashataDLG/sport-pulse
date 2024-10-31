@@ -59,15 +59,17 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 			<Box sx={{
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'center',
+				justifyContent: 'space-evenly',
 				gap: '20px',
 				paddingBottom: '10px',
+				paddingRight: '10px',
+				paddingLeft: '10px',
 			}}>
 				<Button sx={{
 					borderRadius: '20px',
 					fontFamily: 'Montserrat',
 					fontWeight: 'bolder',
-					fontSize: '1rem',
+					fontSize: '0.9rem',
 					backgroundColor: '#00A4CC',
 					color: '#fff',
 					'&:hover': {
@@ -80,7 +82,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 					borderRadius: '20px',
 					fontFamily: 'Montserrat',
 					fontWeight: 'bolder',
-					fontSize: '1rem',
+					fontSize: '0.9rem',
 					backgroundColor: '#00A4CC',
 					color: '#fff',
 					'&:hover': {
