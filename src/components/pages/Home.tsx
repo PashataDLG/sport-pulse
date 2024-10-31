@@ -3,6 +3,7 @@ import Banner from '../common/Banner';
 import UpcomingEvents from '../common/UpcomingEvents';
 import LiveEvents from '../common/LiveEvents';
 import theme from '../../theme/theme';
+import Standings from '../common/Standings';
 
 const events = [
     { id: 1, name: 'Football Match', date: '2024-10-30', time: '19:00' },
@@ -41,6 +42,7 @@ const Home = (): JSX.Element => {
                 }}>
                     <UpcomingEvents events={events} />
                     <LiveEvents events={liveEvents} />
+                    <Standings />
                 </Box>
                 :
                 <Box sx={{
@@ -52,6 +54,7 @@ const Home = (): JSX.Element => {
                 }}>
                     <UpcomingEvents events={events} />
                     <LiveEvents events={liveEvents} />
+                    <Standings />
                 </Box>}
         </Container >
     );
