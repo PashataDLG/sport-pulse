@@ -6,12 +6,15 @@ import theme from '../../theme/theme';
 import Standings from '../common/Standings';
 
 const events = [
-    { id: 1, name: 'Football Match', date: '2024-10-30', time: '19:00' },
-    { id: 3, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
-    { id: 4, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
-    { id: 5, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
-    { id: 6, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
-    { id: 7, name: 'Basketball Game', date: '2024-11-05', time: '20:30' },
+    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 2, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 3, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 4, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 5, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 6, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 7, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 8, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
+    { id: 9, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
 ];
 
 const liveEvents = [
