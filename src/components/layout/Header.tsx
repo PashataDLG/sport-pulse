@@ -10,12 +10,12 @@ const Header = (): JSX.Element => {
 
     return (
         <AppBar position="fixed" color="inherit">
-            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'coulmn', }}>
                 <Box
                     component="img"
                     src="/src/assets/Pulse_sports__.png"
                     alt="SportPulse Logo"
-                    sx={{ width: 250, height: 60 }}
+                    sx={{ width: 250, height: 60, display: 'flex', transform: 'translateX(-25%)' }}
                 />
                 {isMobile ? (
                     <>
