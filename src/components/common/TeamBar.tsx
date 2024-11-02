@@ -1,6 +1,4 @@
-import { AppBar, Grid, IconButton, Toolbar } from "@mui/material";
-import Grid2 from '@mui/material/Grid2';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Avatar, Box, Grid, Toolbar } from "@mui/material";
 
 interface Team {
     id: number;
@@ -13,20 +11,30 @@ interface teams {
 
 const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
     return (
-        <AppBar position="static" color="default">
-            <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>cente
-                <Grid container spacing={2} justifyContent="r">
-                    {teams.map((team) => (
-                        <Grid item key={team.id}>
-                            <img src={team.crest} alt={`Team ${team.crest} Crest`} style={{ width: 50, height: 50, borderRadius: '50%' }} />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Toolbar>
-        </AppBar>
+        <Box sx={{marginTop: '55px', borderTop: '2px solid white'}}>
+            <AppBar position="static" color="default" sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'row',
+                backgroundColor: '#f5f5f5',
+                maxHeight: '100px',
+            }}>
+                <Toolbar>
+                    <Grid container spacing={2} justifyContent="r">
+                        {teams.map((team) => (
+                            <Box
+                            component="img"
+                            src={team.crest}
+                            alt="team crest"
+                            sx={{ width: 45, height: 45, paddingLeft: '20px',
+                            paddingTop: '20px'
+                             }}
+                        />
+                        ))}
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
