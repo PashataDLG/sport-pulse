@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Grid, IconButton, Toolbar } from "@mui/material";
 import Grid2 from '@mui/material/Grid2';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -21,7 +21,7 @@ const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
                 <Grid container spacing={2} justifyContent="r">
                     {teams.map((team) => (
                         <Grid item key={team.id}>
-                            <img src={team.crest} alt={`Team ${team.id} Crest`} style={{ width: 50, height: 50, borderRadius: '50%' }} />
+                            <img src={team.crest} alt={`Team ${team.crest} Crest`} style={{ width: 50, height: 50, borderRadius: '50%' }} />
                         </Grid>
                     ))}
                 </Grid>
