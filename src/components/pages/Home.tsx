@@ -51,21 +51,7 @@ const liveEvents: LiveEvent[] = [
 
 
 const Home = (): JSX.Element => {
-<<<<<<< HEAD
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
-=======
-    return (
-        <Container maxWidth={false} sx={{ width: '100vw', padding: '0 !important' }}>
-            <Banner />
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                padding: '10px',
-            }}>
-                < UpcomingEvents events={events} />
-                <LiveScoreWiget events={liveEvents} />
-            </Box>
->>>>>>> 4be922f (added live events and removed unused imports)
 
     return (
         <Container maxWidth={false} sx={{ width: '100%', padding: '0 !important' }}>
