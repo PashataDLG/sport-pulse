@@ -11,7 +11,7 @@ interface teams {
 
 const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
     return (
-        <Box sx={{marginTop: '55px', borderTop: '2px solid white'}}>
+        <Box sx={{ marginTop: '50px', borderTop: '2px solid white' }}>
             <AppBar position="static" color="default" sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -20,16 +20,24 @@ const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
                 maxHeight: '100px',
             }}>
                 <Toolbar>
-                    <Grid container spacing={2} justifyContent="r">
+                    <Grid container spacing={1} justifyContent="r">
                         {teams.map((team) => (
                             <Box
-                            component="img"
-                            src={team.crest}
-                            alt="team crest"
-                            sx={{ width: 45, height: 45, paddingLeft: '20px',
-                            paddingTop: '20px'
-                             }}
-                        />
+                                component="img"
+                                src={team.crest}
+                                alt="team crest"
+                                sx={{
+                                    width: 38,
+                                    height: 38,
+                                    paddingLeft: '20px',
+                                    paddingTop: '20px',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'scale(1.3)',
+                                        cursor: 'pointer'
+                                    }
+                                }}
+                            />
                         ))}
                     </Grid>
                 </Toolbar>
