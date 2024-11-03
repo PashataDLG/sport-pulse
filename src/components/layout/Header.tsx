@@ -1,8 +1,11 @@
-import { AppBar, Toolbar, Button, Box, useMediaQuery, useTheme, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Button, Box, useMediaQuery, useTheme, IconButton, Typography } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAppContext } from "../../context/appContext";
 import NavDrawer from "../common/NavDrawer";
 import TeamAppBar from "../common/TeamBar";
+import { IoHome } from "react-icons/io5";
+import { MdEmojiEvents } from "react-icons/md";
+import { MdScoreboard } from "react-icons/md";
 
 const teams = [
     { id: 1, crest: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' },
@@ -52,53 +55,83 @@ const Header = (): JSX.Element => {
                         </>
                     ) : (
                         <Box sx={{ display: 'flex', gap: '20px' }}>
-                            <Button color="inherit"
+                            <Button
+                                color="inherit"
                                 sx={{
                                     borderRadius: '20px',
                                     padding: '10px 20px',
-                                    transition: '0.4s',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 'bolder',
-                                    fontSize: '1.2rem',
-                                    backgroundColor: '#00A4CC',
-                                    color: '#fff',
+                                    transition: 'color 0.4s',
+                                    backgroundColor: 'inherit',
+                                    color: '#00A4CC',
                                     '&:hover': {
-                                        backgroundColor: '#007BAC',
+                                        color: '#046b94',
                                     },
-                                }}>
-                                Home
+                                }}
+                            >
+                                <IoHome size={22} style={{ color: 'inherit' }} />
+                                <Typography
+                                    sx={{
+                                        marginLeft: '10px',
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: 'bolder',
+                                        fontSize: '1.2rem',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    Home
+                                </Typography>
                             </Button>
-                            <Button color="inherit"
+                            <Button
+                                color="inherit"
                                 sx={{
                                     borderRadius: '20px',
                                     padding: '10px 20px',
-                                    transition: '0.4s',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 'bolder',
-                                    fontSize: '1.2rem',
-                                    backgroundColor: '#00A4CC',
-                                    color: '#fff',
+                                    transition: 'color 0.4s',
+                                    backgroundColor: 'inherit',
+                                    color: '#00A4CC',
                                     '&:hover': {
-                                        backgroundColor: '#007BAC',
+                                        color: '#046b94',
                                     },
-                                }}>
-                                Events
+                                }}
+                            >
+                                <MdEmojiEvents size={22} style={{ color: 'inherit' }} />
+                                <Typography
+                                    sx={{
+                                        marginLeft: '10px',
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: 'bolder',
+                                        fontSize: '1.2rem',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    Events
+                                </Typography>
                             </Button>
-                            <Button color="inherit"
+                            <Button
+                                color="inherit"
                                 sx={{
                                     borderRadius: '20px',
                                     padding: '10px 20px',
-                                    transition: '0.4s',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 'bolder',
-                                    fontSize: '1.2rem',
-                                    backgroundColor: '#00A4CC',
-                                    color: '#fff',
+                                    transition: 'color 0.4s',
+                                    backgroundColor: 'inherit',
+                                    color: '#00A4CC',
                                     '&:hover': {
-                                        backgroundColor: '#007BAC',
+                                        color: '#046b94',
                                     },
-                                }}>
-                                Live Scores
+                                }}
+                            >
+                                <MdScoreboard size={22} style={{ color: 'inherit' }} />
+                                <Typography
+                                    sx={{
+                                        marginLeft: '10px',
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: 'bolder',
+                                        fontSize: '1.2rem',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    Live Score
+                                </Typography>
                             </Button>
                         </Box>
                     )}
