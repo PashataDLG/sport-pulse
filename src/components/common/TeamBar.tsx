@@ -1,4 +1,5 @@
 import { AppBar, Avatar, Box, Grid, Toolbar } from "@mui/material";
+import Tooltip from '@mui/material/Tooltip';
 
 interface Team {
     id: number;
@@ -22,22 +23,24 @@ const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
                 <Toolbar>
                     <Grid container spacing={1} justifyContent="r">
                         {teams.map((team) => (
-                            <Box
-                                component="img"
-                                src={team.crest}
-                                alt="team crest"
-                                sx={{
-                                    width: 38,
-                                    height: 38,
-                                    paddingLeft: '20px',
-                                    paddingTop: '20px',
-                                    transition: 'transform 0.3s ease-in-out',
-                                    '&:hover': {
-                                        transform: 'scale(1.3)',
-                                        cursor: 'pointer'
-                                    }
-                                }}
-                            />
+                            <Tooltip title="Liverpool" placement="bottom-start">
+                                <Box
+                                    component="img"
+                                    src={team.crest}
+                                    alt="team crest"
+                                    sx={{
+                                        width: 38,
+                                        height: 38,
+                                        paddingLeft: '20px',
+                                        paddingTop: '20px',
+                                        transition: 'transform 0.3s ease-in-out',
+                                        '&:hover': {
+                                            transform: 'scale(1.3)',
+                                            cursor: 'pointer'
+                                        }
+                                    }}
+                                />
+                            </Tooltip>
                         ))}
                     </Grid>
                 </Toolbar>
