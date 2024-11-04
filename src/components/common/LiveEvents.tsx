@@ -38,6 +38,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
             alignSelf: 'center',
             fontSize: '2rem',
         }}>
+            <CgMediaLive size={30} style={{ color: '#1976d2', marginRight: '10px'  }} />
             Live Events
         </Typography>
         <TableContainer component={Paper} sx={{

@@ -41,6 +41,7 @@ const Standings: React.FC = () => {
             alignSelf: 'center',
             fontSize: '2rem',
         }}>
+            <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
             Standings
         </Typography>
         <TableContainer component={Paper}  sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>

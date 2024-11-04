@@ -40,6 +40,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
 				alignSelf: 'center',
 				fontSize: '2rem',
 			}}>
+				<MdOutlineNextWeek size={30} style={{ color: '#1976d2', marginRight: '10px' }}/>
 				Upcoming Events
 			</Typography>
 			<TableContainer component={Paper} sx={{
