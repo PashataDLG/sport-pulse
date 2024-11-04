@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Grid, Toolbar } from "@mui/material";
+import { AppBar, Box, Grid, Toolbar } from "@mui/material";
 import Tooltip from '@mui/material/Tooltip';
 
 interface Team {
