@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button, List, ListItem, Typography, Avatar, useMediaQuery, Tab, Table, TableContainer, TableBody, TableRow, TableCell, TableHead, Paper } from '@mui/material';
+import { CgMediaLive } from "react-icons/cg";
 import theme from '../../theme/theme';
 
 interface LiveEvent {
@@ -28,9 +29,8 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
         <Typography variant="h4" gutterBottom sx={{
             fontFamily: 'Montserrat',
             fontWeight: 'bold',
-            color: '#ffffff',
             textAlign: 'center',
-            backgroundColor: '#1976d2',
+            color: '#1976d2',
             borderRadius: '20px',
             marginBottom: '20px',
             marginTop: '0px',
@@ -114,16 +114,16 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
         <Typography variant="h4" gutterBottom sx={{
             fontFamily: 'Montserrat',
             fontWeight: 'bold',
-            color: '#ffffff',
+            color: '#1976d2',
             textAlign: 'center',
-            backgroundColor: '#1976d2',
+            backgroundColor: 'inherit',
             borderRadius: '20px',
             marginBottom: '20px',
-            marginTop: '0px',
             width: '100%',
             alignSelf: 'center',
             fontSize: '2rem',
         }}>
+            <CgMediaLive size={30} style={{ color: '#1976d2', marginRight: '10px'  }} />
             Live Events
         </Typography>
         <TableContainer component={Paper} sx={{
