@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Box, Avatar, useMediaQuery } from '@mui/material';
+import { IoMdPodium } from "react-icons/io";
 import theme from '../../theme/theme';
 
 const Standings: React.FC = () => {
@@ -31,9 +32,8 @@ const Standings: React.FC = () => {
         <Typography variant="h4" gutterBottom sx={{
             fontFamily: 'Montserrat',
             fontWeight: 'bold',
-            color: '#ffffff',
+            color: '#1976d2',
             textAlign: 'center',
-            backgroundColor: '#1976d2',
             borderRadius: '20px',
             marginBottom: '20px',
             marginTop: '0px',
@@ -83,9 +83,8 @@ const Standings: React.FC = () => {
         <Typography variant="h4" gutterBottom sx={{
             fontFamily: 'Montserrat',
             fontWeight: 'bold',
-            color: '#ffffff',
+            color: '#1976d2',
             textAlign: 'center',
-            backgroundColor: '#1976d2',
             borderRadius: '20px',
             marginBottom: '20px',
             marginTop: '0px',
@@ -93,6 +92,7 @@ const Standings: React.FC = () => {
             alignSelf: 'center',
             fontSize: '2rem',
         }}>
+            <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
             Standings
         </Typography>
         <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
