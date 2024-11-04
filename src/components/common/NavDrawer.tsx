@@ -11,7 +11,7 @@ const NavDrawer = () => {
         >
             <Box sx={{ textAlign: 'center' }}>
                 <List>
-                    {['Home', 'Events', 'Live Scores'].map((text, index) => (
+                    {['Home', 'Events', 'Live Scores'].map((text) => (
                         <ListItem
                             key={text}
                             sx={{
