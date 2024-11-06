@@ -6,6 +6,7 @@ import TeamAppBar from "../common/TeamBar";
 import { IoHome } from "react-icons/io5";
 import { MdEmojiEvents } from "react-icons/md";
 import { MdScoreboard } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const teams = [
     { id: 1, crest: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' },
@@ -35,12 +36,14 @@ const Header = (): JSX.Element => {
         <>
             <AppBar position="fixed" color="inherit">
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'coulmn', }}>
-                    <Box
-                        component="img"
-                        src="/src/assets/Pulse_sports__.png"
-                        alt="SportPulse Logo"
-                        sx={{ width: 250, height: 60, display: 'flex', transform: 'translateX(-25%)' }}
-                    />
+                    <Link to="/">
+                        <Box
+                            component="img"
+                            src="/src/assets/Pulse_sports__.png"
+                            alt="SportPulse Logo"
+                            sx={{ width: 250, height: 60, display: 'flex', transform: 'translateX(-25%)' }}
+                        />
+                    </Link>
                     {isMobile ? (
                         <>
                             <IconButton
