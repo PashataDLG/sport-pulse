@@ -5,13 +5,16 @@ import './index.css'
 import theme from './theme/theme.ts'
 import { ThemeProvider } from '@mui/material/styles'
 import { АppContextProvider } from './context/appContext.tsx'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<АppContextProvider>
-			<ThemeProvider theme={theme}>
-				<App />
-			</ThemeProvider>
-		</АppContextProvider>
+		<Router>
+			<АppContextProvider>
+				<ThemeProvider theme={theme}>
+					<App />
+				</ThemeProvider>
+			</АppContextProvider>
+		</Router>
 	</StrictMode>,
 );
