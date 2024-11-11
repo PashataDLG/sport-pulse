@@ -15,7 +15,7 @@ interface LiveEvent {
     homeTeamGoals: number;
     awayTeamGoals: number;
 };
-const events = [
+const homeEvents = [
     { id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
     { id: 2, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
     { id: 3, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
@@ -52,7 +52,7 @@ const Home = (): JSX.Element => {
                     gap: '40px',
                     width: '100%',
                 }}>
-                    <UpcomingEvents events={events} />
+                    <UpcomingEvents events={homeEvents} page="home" />
                     <LiveEvents events={liveEvents} />
                     <Standings />
                 </Box>
@@ -64,7 +64,7 @@ const Home = (): JSX.Element => {
                     padding: '10px',
                     gap: '40px'
                 }}>
-                    <UpcomingEvents events={events} />
+                    <UpcomingEvents events={homeEvents} page="home" />
                     <LiveEvents events={liveEvents} />
                     <Standings />
                 </Box>}
