@@ -13,7 +13,7 @@ const teamUpcomingEvents = [
 
 const TeamPage = (): JSX.Element => {
 	return (
-		<Container maxWidth="xl" sx={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '10%', flexDirection: 'column', gap: '10%' }}>
+		<Container maxWidth="xl" sx={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '10%', flexDirection: 'column', gap: '10%', alignItems: 'center' }}>
 			<TeamBanner />
 			<UpcomingEvents events={teamUpcomingEvents} page='team' />
 		</Container >
