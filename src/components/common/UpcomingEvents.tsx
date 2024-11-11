@@ -3,8 +3,6 @@ import { Box, Typography, Avatar, Paper, Table, TableBody, TableCell, TableConta
 import { MdOutlineNextWeek } from "react-icons/md";
 import dateFormatter from '../../utils/dateFormatter';
 import theme from '../../theme/theme';
-import { BoxTypeMap } from '@mui/system';
-import { OverridableComponent } from '@mui/types';
 
 interface Event {
 	id: number;
