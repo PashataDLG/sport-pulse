@@ -22,7 +22,7 @@ interface StyledBoxProps {
 }
 
 const StyledBox = styled(Box)<StyledBoxProps>(({ theme, page }: { theme: Theme; page: 'team' | 'home' }) => ({
-	width: page === 'team' ? '90%' : '26.5%',
+	width: page === 'team' ? '89%' : '26.5%',
 	gap: theme.spacing(2),
 	[theme.breakpoints.down('md')]: {
 		width: '100%', // Full width on smaller screens for both pages
@@ -85,7 +85,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												padding: '20px',
 												marginTop: '-30px'
 											}}>
-												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>
+												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', fontFamily: 'Poppins' }}>
 													{dateFormatter(event.date)}
 												</Typography>
 												<Box sx={{
@@ -94,7 +94,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 													alignItems: 'center',
 													gap: '10px',
 												}}>
-													<Typography sx={{ fontSize: '1.1rem' }}>
+													<Typography sx={{ fontSize: '1.1rem', fontFamily: 'Poppins' }}>
 														{event.time}
 													</Typography>
 												</Box>
@@ -122,7 +122,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 					display: 'flex',
 					flexDirection: 'column',
 					bgcolor: 'background.paper',
-					
+
 				}}>
 					<Typography variant="h4" gutterBottom sx={{
 						fontFamily: 'Montserrat',
@@ -155,7 +155,8 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												alignItems: 'center',
 												gap: '5px'
 											}}>
-												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' />{event.homeTeam}
+												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' />
+												<Typography sx={{ fontFamily: 'Poppins' }}>{event.homeTeam}</Typography>
 											</Box>
 										</TableCell>
 										<TableCell>
@@ -167,7 +168,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												padding: '20px',
 												marginTop: '-30px'
 											}}>
-												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>
+												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', fontFamily: 'Roboto Mono' }}>
 													{dateFormatter(event.date)}
 												</Typography>
 												<Box sx={{
@@ -176,7 +177,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 													alignItems: 'center',
 													gap: '10px',
 												}}>
-													<Typography sx={{ fontSize: '1.1rem' }}>
+													<Typography sx={{ fontSize: '1.1rem', fontFamily: 'Roboto Mono' }}>
 														{event.time}
 													</Typography>
 												</Box>
@@ -190,7 +191,8 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												alignItems: 'center',
 												gap: '5px',
 											}}>
-												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png' />{event.awayTeam}
+												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png' />
+												<Typography sx={{ fontFamily: 'Poppins' }}>{event.awayTeam}</Typography>
 											</Box>
 										</TableCell>
 									</TableRow>
