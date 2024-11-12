@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Container, useMediaQuery } from '@mui/material'
 import TeamBanner from '../common/TeamBanner';
 import UpcomingEvents from '../common/UpcomingEvents';
 
@@ -12,11 +12,22 @@ const teamUpcomingEvents = [
 
 
 const TeamPage = (): JSX.Element => {
+	const isMobile = useMediaQuery('(max-width:600px)');
+
 	return (
-		<Container maxWidth="xl" sx={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '10%', flexDirection: 'column', gap: '10%', alignItems: 'center' }}>
-			<TeamBanner />
-			<UpcomingEvents events={teamUpcomingEvents} page='team' />
-		</Container >
+		<>
+			{isMobile ? 
+				<Container maxWidth="xl" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: '0'  }}>
+					<TeamBanner />
+					<UpcomingEvents events={teamUpcomingEvents} page='team' />
+				</Container >
+				:
+				<Container maxWidth="xl" sx={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '10%', flexDirection: 'column', gap: '10%', alignItems: 'center' }}>
+					<TeamBanner />
+					<UpcomingEvents events={teamUpcomingEvents} page='team' />
+				</Container >
+			}
+		</>
 	)
 }
 
