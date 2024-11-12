@@ -20,6 +20,7 @@ const TeamPage = (): JSX.Element => {
 			{isMobile ? 
 				<Container maxWidth="xl" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: '0'  }}>
 					<TeamBanner />
+					<TeamPageBar />
 					<UpcomingEvents events={teamUpcomingEvents} page='team' />
 				</Container >
 				:
