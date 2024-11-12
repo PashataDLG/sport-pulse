@@ -10,9 +10,10 @@ const TeamBanner = () => {
         <Box
             sx={{
                 width: '90%',
-                minHeight: '50vh',
+                minHeight: { xs: '50vh', sm: '50vh', md: '50vh', lg: '45vh' },
                 bgcolor: 'inherit',
                 display: 'flex',
+                marginTop: { lg: '20px' },
                 flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' },
                 border: { lg: '1px solid #f3f3f3' },
                 flexGrow: 1,
@@ -38,7 +39,7 @@ const TeamBanner = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                         bgcolor: 'inherit',
-                        paddingTop: { xs: '0px', sm: '0px', md: '60px', lg: '80px' },
+                        paddingTop: { xs: '0px', sm: '0px', md: '60px', lg: '0px' },
                     }}
                 >
                     <img
@@ -50,7 +51,7 @@ const TeamBanner = () => {
                 {/* Text box */}
                 <Box
                     sx={{
-                        width: '60%',
+                        width: { xs: '60%', sm: '60%', md: '80%', lg: '100%' },
                         height: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -93,7 +94,7 @@ const TeamBanner = () => {
                 <Box
                     component="img"
                     src="/public/2024-25-squad-photo-30092024-full.jpg"
-                    sx={{ width: { xs: '100%', md: '90%', lg: '55%' } }}
+                    sx={{ width: { xs: '100%', md: '90%', lg: '100%' }, height: { lg: '100%' }, }}
                 />
             </Box>
         </Box>
