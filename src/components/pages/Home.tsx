@@ -54,7 +54,7 @@ const Home = (): JSX.Element => {
                 }}>
                     <UpcomingEvents events={homeEvents} page="home" />
                     <LiveEvents events={liveEvents} page="home" />
-                    <Standings />
+                    <Standings page="home" />
                 </Box>
                 :
                 <Box sx={{
@@ -66,7 +66,7 @@ const Home = (): JSX.Element => {
                 }}>
                     <UpcomingEvents events={homeEvents} page="home" />
                     <LiveEvents events={liveEvents} page="home"/>
-                    <Standings />
+                    <Standings page="home"/>
                 </Box>}
         </Container >
     );
