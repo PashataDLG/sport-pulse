@@ -3,6 +3,7 @@ import { Box, Typography, Avatar, Paper, Table, TableBody, TableCell, TableConta
 import { MdOutlineNextWeek } from "react-icons/md";
 import dateFormatter from '../../utils/dateFormatter';
 import theme from '../../theme/theme';
+import StyledBox from './Styledbox';
 
 interface Event {
 	id: number;
@@ -21,14 +22,14 @@ interface StyledBoxProps {
 	page: 'team' | 'home';
 }
 
-const StyledBox = styled(Box)<StyledBoxProps>(({ theme, page }: { theme: Theme; page: 'team' | 'home' }) => ({
-	width: page === 'team' ? '89%' : '26.5%',
-	gap: theme.spacing(2),
-	[theme.breakpoints.down('md')]: {
-		width: '100%', // Full width on smaller screens for both pages
-		padding: theme.spacing(2),
-	},
-}));
+// const StyledBox = styled(Box)<StyledBoxProps>(({ theme, page }: { theme: Theme; page: 'team' | 'home' }) => ({
+// 	width: page === 'team' ? '89%' : '26.5%',
+// 	gap: theme.spacing(2),
+// 	[theme.breakpoints.down('md')]: {
+// 		width: '100%', // Full width on smaller screens for both pages
+// 		padding: theme.spacing(2),
+// 	},
+// }));
 
 const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 	const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
