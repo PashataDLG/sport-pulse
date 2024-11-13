@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Avatar, useMediaQuery, Table, TableContainer, TableBody, TableRow, TableCell,  Paper } from '@mui/material';
 import { CgMediaLive } from "react-icons/cg";
 import theme from '../../theme/theme';
+import StyledBox from './Styledbox';
 
 interface LiveEvent {
     id: number;
@@ -14,9 +15,10 @@ interface LiveEvent {
 
 interface LiveEventsProps {
     events: LiveEvent[];
+    page: 'team' | 'home';
 }
 
-const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
+const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
@@ -106,11 +108,10 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
                 </TableBody>
             </Table>
         </TableContainer>
-    </Box> :  <Box sx={{
+    </Box> :  <StyledBox page={page} sx={{
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'background.paper',
-        width: '400px'
     }}>
         <Typography variant="h4" gutterBottom sx={{
             fontFamily: 'Montserrat',
@@ -192,7 +193,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events }) => {
                 </TableBody>
             </Table>
         </TableContainer>
-    </Box>
+    </StyledBox>
     );
 }
 
