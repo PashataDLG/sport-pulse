@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+
 import { Box, Button, Typography } from '@mui/material';
 import { MdOutlineNextWeek } from 'react-icons/md';
-import { TeamPageContext, useTeamPageContext } from '../../context/teamPageContext';
+import {  useTeamPageContext } from '../../context/teamPageContext';
 
 const TeamPageBar = () => {
     const {selectedButton, handleButtonClick } = useTeamPageContext();
