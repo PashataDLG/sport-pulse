@@ -12,9 +12,9 @@ const TeamPageBar = () => {
         { label: 'Upcoming Events', icon: <MdOutlineNextWeek size={18} style={{ marginRight: '8px' }} /> },
         { label: 'Live Events', icon: <CgMediaLive size={18} style={{ marginRight: '8px' }} /> },
         { label: 'Standings', icon: <IoMdPodium size={18} style={{ marginRight: '8px' }} /> },
-        { label: 'News', icon: <FaRegNewspaper size={18} style={{ marginRight: '8px' }} /> },
+        { label: 'Team News', icon: <FaRegNewspaper size={18} style={{ marginRight: '8px' }} /> },
     ]
-
+ 
     return (
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' }, gap: '15px', maxWidth: '100%' }}>
             {buttons.map((button, index) => (
