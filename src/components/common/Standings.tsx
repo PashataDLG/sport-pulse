@@ -2,8 +2,13 @@ import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Box, Avatar, useMediaQuery } from '@mui/material';
 import { IoMdPodium } from "react-icons/io";
 import theme from '../../theme/theme';
+import StyledBox from './Styledbox';
 
-const Standings: React.FC = () => {
+interface StandingsProps {
+    page: 'team' | 'home';
+};
+
+const Standings: React.FC<StandingsProps> = ({ page }) => {
     const standingsData = [
         { rank: 1, name: 'Liverpool', points: 23, logo: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png', goalDiff: '+23', playedGames: 10 },
         { rank: 2, name: 'Arsenal', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png', goalDiff: '+23', playedGames: 10 },
@@ -21,7 +26,7 @@ const Standings: React.FC = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
-        <Box>
+        <>
             {isMobile ? (
                 <Box sx={{
                     display: 'flex',
@@ -29,105 +34,104 @@ const Standings: React.FC = () => {
                     bgcolor: 'background.paper',
                     width: '100%'
                 }}>
-        <Typography variant="h4" gutterBottom sx={{
-            fontFamily: 'Montserrat',
-            fontWeight: 'bold',
-            color: '#1976d2',
-            textAlign: 'center',
-            borderRadius: '20px',
-            marginBottom: '20px',
-            marginTop: '0px',
-            width: '100%',
-            alignSelf: 'center',
-            fontSize: '2rem',
-        }}>
-            <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
-            Standings
-        </Typography>
-        <TableContainer component={Paper}  sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>#</TableCell>
-                        <TableCell>Team</TableCell>
-                        <TableCell>P</TableCell>
-                        <TableCell>DIFF</TableCell>
-                        <TableCell>PTS</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {standingsData.map((row) => (
-                        <TableRow key={row.rank}>
-                            <TableCell>{row.rank}</TableCell>
-                            <TableCell>
-                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
-                                    {row.name}
-                                </Box>
-                            </TableCell>
-                            <TableCell>{row.playedGames}</TableCell>
-                            <TableCell>{row.goalDiff}</TableCell>
-                            <TableCell>{row.points}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-        </Box>
-    ) : (
-        <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        bgcolor: 'background.paper',
-        width: '400px'
-    }}>
-        <Typography variant="h4" gutterBottom sx={{
-            fontFamily: 'Montserrat',
-            fontWeight: 'bold',
-            color: '#1976d2',
-            textAlign: 'center',
-            borderRadius: '20px',
-            marginBottom: '20px',
-            marginTop: '0px',
-            width: '100%',
-            alignSelf: 'center',
-            fontSize: '2rem',
-        }}>
-            <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
-            Standings
-        </Typography>
-        <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>#</TableCell>
-                        <TableCell>Team</TableCell>
-                        <TableCell>P</TableCell>
-                        <TableCell>DIFF</TableCell>
-                        <TableCell>PTS</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {standingsData.map((row) => (
-                        <TableRow key={row.rank}>
-                            <TableCell>{row.rank}</TableCell>
-                            <TableCell>
-                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
-                                    {row.name}
-                                </Box>
-                            </TableCell>
-                            <TableCell>{row.playedGames}</TableCell>
-                            <TableCell>{row.goalDiff}</TableCell>
-                            <TableCell>{row.points}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    <Typography variant="h4" gutterBottom sx={{
+                        fontFamily: 'Montserrat',
+                        fontWeight: 'bold',
+                        color: '#1976d2',
+                        textAlign: 'center',
+                        borderRadius: '20px',
+                        marginBottom: '20px',
+                        marginTop: '0px',
+                        width: '100%',
+                        alignSelf: 'center',
+                        fontSize: '2rem',
+                    }}>
+                        <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                        Standings
+                    </Typography>
+                    <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>#</TableCell>
+                                    <TableCell>Team</TableCell>
+                                    <TableCell>P</TableCell>
+                                    <TableCell>DIFF</TableCell>
+                                    <TableCell>PTS</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {standingsData.map((row) => (
+                                    <TableRow key={row.rank}>
+                                        <TableCell>{row.rank}</TableCell>
+                                        <TableCell>
+                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
+                                                {row.name}
+                                            </Box>
+                                        </TableCell>
+                                        <TableCell>{row.playedGames}</TableCell>
+                                        <TableCell>{row.goalDiff}</TableCell>
+                                        <TableCell>{row.points}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </Box>
+            ) : (
+                <StyledBox page={page} sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    bgcolor: 'background.paper',
+                }}>
+                    <Typography variant="h4" gutterBottom sx={{
+                        fontFamily: 'Montserrat',
+                        fontWeight: 'bold',
+                        color: '#1976d2',
+                        textAlign: 'center',
+                        borderRadius: '20px',
+                        marginBottom: '20px',
+                        marginTop: '0px',
+                        width: '100%',
+                        alignSelf: 'center',
+                        fontSize: '2rem',
+                    }}>
+                        <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                        Standings
+                    </Typography>
+                    <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>#</TableCell>
+                                    <TableCell>Team</TableCell>
+                                    <TableCell>P</TableCell>
+                                    <TableCell>DIFF</TableCell>
+                                    <TableCell>PTS</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {standingsData.map((row) => (
+                                    <TableRow key={row.rank}>
+                                        <TableCell>{row.rank}</TableCell>
+                                        <TableCell>
+                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
+                                                {row.name}
+                                            </Box>
+                                        </TableCell>
+                                        <TableCell>{row.playedGames}</TableCell>
+                                        <TableCell>{row.goalDiff}</TableCell>
+                                        <TableCell>{row.points}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </StyledBox>
             )}
-        </Box>
+        </>
     );
 };
 
