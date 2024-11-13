@@ -4,6 +4,7 @@ import UpcomingEvents from '../common/UpcomingEvents';
 import TeamPageBar from '../common/TeamPageBar';
 import { useTeamPageContext } from '../../context/teamPageContext';
 import LiveEvents from '../common/LiveEvents';
+import Standings from '../common/Standings';
 
 const teamUpcomingEvents = [
 	{ id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
@@ -29,7 +30,7 @@ const TeamPage = (): JSX.Element => {
 		switch (selectedButton) {
 			case 0: return <UpcomingEvents events={teamUpcomingEvents} page='team' />; break;
 			case 1: return <LiveEvents events={teamLiveEvents} page="team"/>; break;
-			case 2: return <div>Standings component</div>; break;
+			case 2: return <Standings page="team"/>; break;
 		}
 	}
 
