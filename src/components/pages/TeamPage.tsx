@@ -31,6 +31,7 @@ const TeamPage = (): JSX.Element => {
 			case 0: return <UpcomingEvents events={teamUpcomingEvents} page='team' />; break;
 			case 1: return <LiveEvents events={teamLiveEvents} page="team"/>; break;
 			case 2: return <Standings page="team"/>; break;
+			case 3: return <div>News page!</div>; break;
 		}
 	}
 
