@@ -1,23 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { MdOutlineNextWeek } from 'react-icons/md';
-
+import { TeamPageContext, useTeamPageContext } from '../../context/teamPageContext';
 
 const TeamPageBar = () => {
-    const [selectedButton, setSelectedButton] = useState<number | null>(null);
-
-    const handleButtonClick = (index: number) => {
-        setSelectedButton(index);
-    };
+    const {selectedButton, handleButtonClick } = useTeamPageContext();
 
     const buttons = [
         { label: 'Upcoming Events', icon: <MdOutlineNextWeek size={18} style={{ marginRight: '8px' }} /> },
-        { label: 'Live Events', icon: <MdOutlineNextWeek size={18} style={{ marginRight: '8px' }}  /> },
+        { label: 'Live Events', icon: <MdOutlineNextWeek size={18} style={{ marginRight: '8px' }} /> },
         { label: 'Standings', icon: <MdOutlineNextWeek size={18} style={{ marginRight: '8px' }} /> },
     ]
 
     return (
-        <Box sx={{ display: 'flex',  flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' },  gap: '15px', maxWidth: '100%' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' }, gap: '15px', maxWidth: '100%' }}>
             {buttons.map((button, index) => (
                 <Button
                     key={index}
