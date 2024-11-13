@@ -53,7 +53,7 @@ const Home = (): JSX.Element => {
                     width: '100%',
                 }}>
                     <UpcomingEvents events={homeEvents} page="home" />
-                    <LiveEvents events={liveEvents} />
+                    <LiveEvents events={liveEvents} page="home" />
                     <Standings />
                 </Box>
                 :
@@ -65,7 +65,7 @@ const Home = (): JSX.Element => {
                     gap: '40px'
                 }}>
                     <UpcomingEvents events={homeEvents} page="home" />
-                    <LiveEvents events={liveEvents} />
+                    <LiveEvents events={liveEvents} page="home"/>
                     <Standings />
                 </Box>}
         </Container >
