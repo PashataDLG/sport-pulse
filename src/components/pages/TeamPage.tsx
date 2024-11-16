@@ -28,10 +28,10 @@ const TeamPage = (): JSX.Element => {
 
     const renderContent = () => {
         switch (selectedButton) {
-            case 0: return <UpcomingEvents events={teamUpcomingEvents} page='team' />;
+            case 0: return <TeamNews />;
             case 1: return <LiveEvents events={teamLiveEvents} page="team" />;
             case 2: return <Standings page="team" />;
-            case 3: return <TeamNews />;
+            case 3: return <UpcomingEvents events={teamUpcomingEvents} page='team' />;
             default: return null;
         }
     }
