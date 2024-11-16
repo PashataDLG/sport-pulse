@@ -16,7 +16,7 @@ const TeamPageBar = () => {
     ]
  
     return (
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' }, gap: '15px', maxWidth: '100%' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' }, gap: '15px', maxWidth: '100%', marginTop: '20px' }}>
             {buttons.map((button, index) => (
                 <Button
                     key={index}
