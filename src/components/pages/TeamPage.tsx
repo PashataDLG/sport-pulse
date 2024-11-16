@@ -6,6 +6,8 @@ import { useTeamPageContext } from '../../context/teamPageContext';
 import LiveEvents from '../common/LiveEvents';
 import Standings from '../common/Standings';
 import TeamNews from '../common/TeamNews';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const teamUpcomingEvents = [
     { id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12' },
@@ -24,7 +26,12 @@ const teamLiveEvents = [
 
 const TeamPage = (): JSX.Element => {
     const isMobile = useMediaQuery('(max-width:600px)');
-    const { selectedButton } = useTeamPageContext();
+    const location = useLocation();
+    const { selectedButton, setSelectedButton } = useTeamPageContext();
+
+    useEffect(() => {
+        setSelectedButton(0);
+    }, [location]);
 
     const renderContent = () => {
         switch (selectedButton) {

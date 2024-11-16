@@ -3,6 +3,7 @@ import { createContext, useState, ReactNode, useContext } from 'react';
 interface TeamPageContextValue {
     selectedButton: number | null;
     handleButtonClick: (index: number) => void;
+    setSelectedButton: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const useTeamPageContext = () => {
@@ -26,6 +27,7 @@ export const TeamPageProvider = ({ children }: { children: ReactNode }) => {
     const values = {
         selectedButton,
         handleButtonClick,
+        setSelectedButton,
     };
 
     return (
