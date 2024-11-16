@@ -17,7 +17,7 @@ export const useTeamPageContext = () => {
 export const TeamPageContext = createContext<TeamPageContextValue | undefined>(undefined);
 
 export const TeamPageProvider = ({ children }: { children: ReactNode }) => {
-    const [selectedButton, setSelectedButton] = useState<number | null>(null);
+    const [selectedButton, setSelectedButton] = useState<number>(0);
 
     const handleButtonClick = (index: number) => {
         setSelectedButton(index);
