@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material"
 import { MdStadium } from "react-icons/md"
 import { useMediaQuery } from '@mui/material';
 
-
 const TeamBanner = () => {
     const isMobile = useMediaQuery('(max-width:600px)');
 
@@ -10,7 +9,7 @@ const TeamBanner = () => {
         <Box
             sx={{
                 width: '90%',
-                minHeight: { xs: '50vh', sm: '50vh', md: '50vh', lg: '45vh' },
+                height: { xs: '50vh', sm: '50vh', md: '50vh', lg: '45vh' },
                 bgcolor: 'inherit',
                 display: 'flex',
                 marginTop: { lg: '20px' },
@@ -101,4 +100,4 @@ const TeamBanner = () => {
     )
 }
 
-export default TeamBanner
+export default TeamBanner;
