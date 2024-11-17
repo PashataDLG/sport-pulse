@@ -29,7 +29,7 @@ const teamLiveEvents = [
         awayTeamGoals: 1
     },
     {
-        id: 1,
+        id: 2,
         homeTeam: 'Liverpool',
         awayTeam: 'Arsenal',
         scoreHomeTeam: 2,
@@ -39,7 +39,7 @@ const teamLiveEvents = [
         awayTeamGoals: 1
     },
     {
-        id: 1,
+        id: 3,
         homeTeam: 'Liverpool',
         awayTeam: 'Arsenal',
         scoreHomeTeam: 2,
@@ -49,7 +49,7 @@ const teamLiveEvents = [
         awayTeamGoals: 1
     },
     {
-        id: 1,
+        id: 4,
         homeTeam: 'Liverpool',
         awayTeam: 'Arsenal',
         scoreHomeTeam: 2,

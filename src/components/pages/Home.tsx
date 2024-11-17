@@ -29,9 +29,9 @@ const homeEvents = [
 
 const liveEvents: LiveEvent[] = [
     { id: 1, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
-    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
-    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
-    { id: 1, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
+    { id: 2, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
+    { id: 3, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
+    { id: 4, homeTeam: 'Liverpool', awayTeam: 'Arsenal', scoreHomeTeam: 2, scoreAwayTeam: 1, time: '90:00', homeTeamGoals: 2, awayTeamGoals: 1 },
 ];
 
 
