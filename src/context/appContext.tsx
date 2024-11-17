@@ -3,7 +3,7 @@ import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useStat
 interface AppContextValue {
     isDrawerOpen: boolean;
     setIsDrawerOpen: Dispatch<SetStateAction<boolean>>;
-    handleDrawerToggle: ( reason?: string) => void;
+    handleDrawerToggle: (event: Event, reason?: string) => void;
 }
 
 const AppContext = createContext<AppContextValue | undefined>(undefined);
@@ -21,10 +21,12 @@ interface AppContextProviderProps {
     children: ReactNode;
 };
 
+type Event = React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>;
+
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-    const handleDrawerToggle = (reason?: string) => {
+    const handleDrawerToggle = (_: Event, reason?: string) => {
         if (isDrawerOpen && reason === 'backdropClick') {
             setIsDrawerOpen(false);
         } else if (!isDrawerOpen) {
@@ -40,7 +42,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     return (
         <AppContext.Provider value={values}>
-            { children }
+        { children }
         </AppContext.Provider>
     );
 };
