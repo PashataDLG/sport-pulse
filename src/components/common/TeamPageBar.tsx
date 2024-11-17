@@ -7,11 +7,11 @@ import {FaRegNewspaper} from "react-icons/fa6";
 
 const TeamPageBar = () => {
     const {handleButtonClick} = useTeamPageContext();
-
+// :{label: string, icon: JSX.Element}[];
     const buttons = [
         {label: 'Team News', icon: <FaRegNewspaper size={18} style={{marginRight: '8px', color: '#1976d2'}}/>},
-        {label: 'Upcoming Events', icon: <MdOutlineNextWeek size={18} style={{marginRight: '8px', color: '#1976d2'}}/>},
         {label: 'Live Events', icon: <CgMediaLive size={18} style={{marginRight: '8px', color: '#1976d2'}}/>},
+        {label: 'Upcoming Events', icon: <MdOutlineNextWeek size={18} style={{marginRight: '8px', color: '#1976d2'}}/>},
         {label: 'Standings', icon: <IoMdPodium size={18} style={{marginRight: '8px', color: '#1976d2'}}/>},
     ]
 
