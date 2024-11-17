@@ -19,5 +19,5 @@ createRoot(document.getElementById('root')!).render(
 				</AppContextProvider>
 			</TeamPageProvider>
 		</Router>
-	</StrictMode>,
+	</StrictMode>
 );
