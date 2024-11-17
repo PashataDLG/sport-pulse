@@ -12,7 +12,7 @@ const TeamNews = () => {
             {/* News box */}
             <Box sx={{ 
                 display: 'flex', 
-                flexDirection: 'row', 
+                flexDirection: {xs: 'column', sm: 'column', md: 'column', lg: 'row'},
                 gap: '40px', 
                 width: '100%',
                 justifyContent: 'flex-start', 
@@ -24,7 +24,7 @@ const TeamNews = () => {
                 {/* News container */}
                 <Box
                     sx={{
-                        width: '28%',
+                        width: {xs: '100%', sm: '100%', md: '100%', lg: '30%', xl: '28%'},
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
@@ -45,7 +45,7 @@ const TeamNews = () => {
                 </Box>
                 <Box
                     sx={{
-                        width: '28%',
+                        width: {xs: '100%', sm: '100%', md: '100%', lg: '30%', xl: '28%'},
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
@@ -66,7 +66,7 @@ const TeamNews = () => {
                 </Box>
                 <Box
                     sx={{
-                        width: '28%',
+                        width: {xs: '100%', sm: '100%', md: '100%', lg: '30%', xl: '28%'},
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
@@ -87,7 +87,7 @@ const TeamNews = () => {
                 </Box>
                 <Box
                     sx={{
-                        width: '28%',
+                        width: {xs: '100%', sm: '100%', md: '100%', lg: '30%', xl: '28%'},
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
