@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import theme from './theme/theme.ts'
 import { ThemeProvider } from '@mui/material/styles'
-import { АppContextProvider } from './context/appContext.tsx'
+import {AppContextProvider} from './context/appContext.tsx'
 import { BrowserRouter as Router } from 'react-router-dom';
 import { TeamPageProvider } from './context/teamPageContext.tsx'
 
@@ -12,11 +12,11 @@ createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<Router>
 			<TeamPageProvider>
-				<АppContextProvider>
+				<AppContextProvider>
 					<ThemeProvider theme={theme}>
 						<App />
 					</ThemeProvider>
-				</АppContextProvider>
+				</AppContextProvider>
 			</TeamPageProvider>
 		</Router>
 	</StrictMode>,
