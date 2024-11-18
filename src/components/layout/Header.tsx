@@ -58,32 +58,34 @@ const Header = (): JSX.Element => {
                         </>
                     ) : (
                         <Box sx={{ display: 'flex', gap: '20px' }}>
-                            <Button
-                                color="inherit"
-                                sx={{
-                                    borderRadius: '20px',
-                                    padding: '10px 20px',
-                                    transition: 'color 0.4s',
-                                    backgroundColor: 'inherit',
-                                    color: '#00A4CC',
-                                    '&:hover': {
-                                        color: '#046b94',
-                                    },
-                                }}
-                            >
-                                <IoHome size={22} style={{ color: 'inherit' }} />
-                                <Typography
+                            <Link to="/">
+                                <Button
+                                    color="inherit"
                                     sx={{
-                                        marginLeft: '10px',
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: 'bolder',
-                                        fontSize: '1.2rem',
-                                        color: 'inherit',
+                                        borderRadius: '20px',
+                                        padding: '10px 20px',
+                                        transition: 'color 0.4s',
+                                        backgroundColor: 'inherit',
+                                        color: '#00A4CC',
+                                        '&:hover': {
+                                            color: '#046b94',
+                                        },
                                     }}
                                 >
-                                    Home
-                                </Typography>
-                            </Button>
+                                    <IoHome size={22} style={{ color: 'inherit' }} />
+                                    <Typography
+                                        sx={{
+                                            marginLeft: '10px',
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: 'bolder',
+                                            fontSize: '1.2rem',
+                                            color: 'inherit',
+                                        }}
+                                    >
+                                        Home
+                                    </Typography>
+                                </Button>
+                            </Link>
                             <Button
                                 color="inherit"
                                 sx={{
