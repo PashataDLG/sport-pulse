@@ -3,7 +3,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from '@mui/material';
 
 const Footer: React.FC = (): JSX.Element => {
     return (
@@ -11,7 +11,8 @@ const Footer: React.FC = (): JSX.Element => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            backgroundColor: '#242424',
+            backgroundColor: 'inherit',
+            borderTop: '1px solid #969696',
             width: '100%',
             height: '30%',
         }}>
@@ -31,6 +32,16 @@ const Footer: React.FC = (): JSX.Element => {
                 <IconButton href="https://www.youtube.com" target="_blank" sx={{ color: '#00A4CC' }}>
                     <FaYoutube size={24} />
                 </IconButton>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: '10px' }}>
+                <Typography sx={{
+                    fontSize: '.9rem',
+                    fontFamily: 'Montserrat',
+                    fontWeight: 'bold',
+                    color: '#00A4CC'
+                }}>
+                    © 2024 PulseSports all rights reserved
+                </Typography>
             </Box>
         </Box>
     );
