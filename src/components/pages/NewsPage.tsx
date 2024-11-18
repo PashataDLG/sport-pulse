@@ -10,19 +10,21 @@ const NewsPage: React.FC = (): JSX.Element => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: '62%',
+                width: {xs: '100%', sm: '100%', md: '100%', lg: '80%', xl: '62%'},
                 marginTop: '20px',
             }}>
-                <Typography sx={{
-                    fontSize: '2rem',
-                    fontFamily: 'Montserrat',
-                    fontWeight: 'bold',
-                    textAlign: 'start',
-                    paddingLeft: '15px'
-                }}>
-                    Liverpool, Man United, Arsenal and Tottenham, will seek compensation from Man City, if the
-                    'citizens' are found guilty
-                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'flex-start' }}>
+                    <Typography sx={{
+                        fontSize: { xs: '1.3rem', lg: '1.5rem', xl: '2rem' },
+                        fontFamily: 'Montserrat',
+                        fontWeight: 'bold',
+                        textAlign: 'start',
+                        paddingLeft: '15px'
+                    }}>
+                        Liverpool, Man United, Arsenal and Tottenham, will seek compensation from Man City, if the
+                        'citizens' are found guilty
+                    </Typography>
+                </Box>
                 <Box sx={{ display: 'flex', alignContent: 'flex-start', width: '100%', height: '2%' }}>
                     <Typography sx={{
                         fontSize: '.9rem',
