@@ -15,6 +15,7 @@ const Footer: React.FC = (): JSX.Element => {
             borderTop: '1px solid #969696',
             width: '100%',
             height: '30%',
+            marginTop: '25px',
         }}>
             <Box sx={{ display: 'flex', gap: '15px', margin: '10px 0px 15px 0px', justifyContent: 'center' }}>
                 <IconButton href="https://www.facebook.com" target="_blank" sx={{ color: '#00A4CC' }}>
