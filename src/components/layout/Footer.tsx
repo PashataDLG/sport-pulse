@@ -15,7 +15,7 @@ const Footer: React.FC = (): JSX.Element => {
             width: '100%',
             height: '30%',
         }}>
-            <Box sx={{ display: 'flex', gap: '15px', marginBottom: '10px' }}>
+            <Box sx={{ display: 'flex', gap: '15px', margin: '10px 0px 15px 0px' }}>
                 <IconButton href="https://www.facebook.com" target="_blank" sx={{ color: 'white' }}>
                     <FaFacebook size={24} />
                 </IconButton>
@@ -25,10 +25,10 @@ const Footer: React.FC = (): JSX.Element => {
                 <IconButton href="https://www.instagram.com" target="_blank" sx={{ color: 'white' }}>
                     <AiFillInstagram size={24} />
                 </IconButton>
-                <IconButton href="https://www.linkedin.com" target="_blank" sx={{ color: 'white' }}>
+                <IconButton href="https://www.tiktok.com" target="_blank" sx={{ color: 'white' }}>
                     <FaTiktok size={24} />
                 </IconButton>
-                <IconButton href="https://www.linkedin.com" target="_blank" sx={{ color: 'white' }}>
+                <IconButton href="https://www.youtube.com" target="_blank" sx={{ color: 'white' }}>
                     <FaYoutube size={24} />
                 </IconButton>
             </Box>
