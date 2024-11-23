@@ -57,8 +57,20 @@ const standingsSlice = createSlice({
     name: 'standings',
     initialState,
     reducers: {
-        setStandings(state, action: PayloadAction<ApiResponse>) {
-            return action.payload;
-        }
+        fetchStandingsStart(state) {
+            state.loading = true;
+            state.error = null;
+        },
+        fetchStandingsSuccess(state, action: PayloadAction<ApiResponse>) {
+            state.competition = action.payload.competition;
+            state.standings = action.payload.standings[0].table;
+            state.loading = false;
+        },
+        fetchStandingsFailure(state, action: PayloadAction<string>) {
+            state.loading = false;
+            state.error = action.payload;
+        },
     }
 });
+
+export default standingsSlice.reducer;
