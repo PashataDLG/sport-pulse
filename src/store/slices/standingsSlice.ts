@@ -73,4 +73,6 @@ const standingsSlice = createSlice({
     }
 });
 
+export const { fetchStandingsStart, fetchStandingsSuccess, fetchStandingsFailure } = standingsSlice.actions;
+
 export default standingsSlice.reducer;
