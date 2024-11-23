@@ -1,50 +1,95 @@
-# React + TypeScript + Vite
+# Sport Pulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sport Pulse is a web application built with React, TypeScript, and Vite. It provides real-time updates on live sports events, team news, standings, and more.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Scripts](#scripts)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To install the dependencies, run:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Scripts
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **`dev`**: Starts the development server.
+- **`build`**: Builds the project for production.
+- **`lint`**: Runs ESLint to check for linting errors.
+- **`preview`**: Previews the production build.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+You can run these scripts using:
+
+npm run <script>
+
+## Project Structure
+gitignore
+.idea/
+[eslint.config.js](http://_vscodecontentref_/1)
+[index.html](http://_vscodecontentref_/2)
+[package.json](http://_vscodecontentref_/3)
+public/
+[README.md](http://_vscodecontentref_/4)
+src/
+    App.tsx
+    assets/
+    components/
+        common/
+        layout/
+        pages/
+    context/
+        appContext.tsx
+        teamPageContext.tsx
+    hooks/
+    index.css
+    main.tsx
+    services/
+    store/
+    styles/
+    theme/
+        theme.ts
+    utils/
+        dateFormatter.ts
+    vite-env.d.ts
+[tsconfig.app.json](http://_vscodecontentref_/5)
+[tsconfig.json](http://_vscodecontentref_/6)
+[tsconfig.node.json](http://_vscodecontentref_/7)
+[vite.config.ts](http://_vscodecontentref_/8)
+
+## Features
+
+- **Live Events**: Real-time updates on live sports events.
+- **Team News**: Latest news about your favorite teams.
+- **Standings**: Current standings of teams in various leagues.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+
+## Usage
+
+### Contexts
+
+- **`AppContext`**: Provides global state management for the application.
+- **`TeamPageContext`**: Manages state specific to the team page.
+
+### Components
+
+- **Common Components**: Shared components like `LiveEvents`, `TeamBar`, `TeamNews`, etc.
+- **Layout Components**: Layout components like `Header`, `Footer`, etc.
+- **Page Components**: Specific pages like `Home`, `TeamPage`, `NewsPage`, etc.
+
+### Utilities
+
+- **`dateFormatter`**: Utility function to format dates.
+
+## Theming
+
+- **Custom Theme Configuration**: Using Material-UI's `createTheme`.
