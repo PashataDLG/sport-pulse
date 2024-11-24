@@ -5,9 +5,9 @@ import theme from '../../theme/theme';
 import StyledBox from './Styledbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
-import { fetchStandingsStart, fetchStandingsFailure, fetchStandingsSuccess, ApiResponse } from '../../slices/standingsSlice';
-import { RootState } from '../store/store';
-import { fetchStandingsData } from '../api/standingsApi';
+import { fetchStandingsStart, fetchStandingsSuccess, fetchStandingsFailure, ApiResponse } from '../../store/slices/standingsSlice';
+import { RootState } from '../../store/store';
+import { fetchStandingsData } from '../../api/standingsApi';
 
 interface StandingsProps {
     page: 'team' | 'home';
@@ -17,22 +17,19 @@ const Standings: React.FC<StandingsProps> = ({ page }) => {
     const dispatch = useDispatch();
     const { competition, standings, loading, error } = useSelector((state: RootState) => state.standings);
 
-    const { data, error: queryError, isLoading } = useQuery<ApiResponse>(['standings'], fetchStandingsData, {
-        onSuccess: (data: ApiResponse) => {
-            dispatch(fetchStandingsSuccess(data));
-        },
-        onError: (error: unknown) => {
-            if (error instanceof Error) {
-                dispatch(fetchStandingsFailure(error.message));
-            } else {
-                dispatch(fetchStandingsFailure('An unknown error occurred'));
-            }
-        },
+    const { data, error: queryError } = useQuery<ApiResponse, Error>({
+        queryKey: ['standings'],
+        queryFn: fetchStandingsData,
     });
 
     useEffect(() => {
-        dispatch(fetchStandingsStart());
-    }, [dispatch]);
+        if (data) {
+            dispatch(fetchStandingsSuccess(data));
+        }
+        if (queryError) {
+            dispatch(fetchStandingsFailure(queryError.message));
+        }
+    }, [data, queryError, dispatch]);
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
