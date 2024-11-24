@@ -34,7 +34,7 @@ interface Standings {
     table: TableEntry[];
 }
 
-interface ApiResponse {
+export interface ApiResponse {
     competition: Competition;
     standings: Standings[];
 }
