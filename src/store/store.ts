@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import standingsReducer from './slices/standingsSlice';
 
 const store = configureStore({
     reducer: {
-        // Add reducers here
+        standings: standingsReducer,
     }
 });
 
