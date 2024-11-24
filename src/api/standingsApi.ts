@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ApiResponse } from '../store/slices/standingsSlice';
+import type { ApiResponse } from '../store/slices/standingsSlice';
 
 export const fetchStandingsData = async (): Promise<ApiResponse> => {
     const response = await axios.get<ApiResponse>(`https://api.football-data.org/v4/competitions/PL/standings?season=2024`, {
