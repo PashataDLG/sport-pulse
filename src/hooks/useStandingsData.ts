@@ -4,7 +4,7 @@ import {fetchStandingsData} from '../api/standingsApi';
 import {fetchStandingsSuccess, fetchStandingsFailure} from '../store/slices/standingsSlice';
 import type {ApiResponse} from '../store/slices/standingsSlice';
 
-export const useStandings = () => {
+export const useStandingsData = () => {
     const dispatch = useDispatch();
 
     const {data, error, isError, isSuccess} = useQuery<ApiResponse, Error>({
