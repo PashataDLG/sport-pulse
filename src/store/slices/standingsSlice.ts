@@ -1,13 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Competition {
-    id: number;
-    name: string;
-    code: string;
-    type: string;
-    emblem: string;
-}
-
 interface Team {
     id: number;
     name: string;
@@ -31,26 +23,79 @@ interface TableEntry {
 }
 
 interface Standings {
+    stage: string;
+    type: string;
+    group: string;
     table: TableEntry[];
 }
 
+interface Filters {
+    season: string;
+}
+
+interface Area {
+    id: number;
+    name: string;
+    code: string;
+    flag: string;
+}
+
+interface Competition {
+    id: number;
+    name: string;
+    code: string;
+    type: string;
+    emblem: string;
+};
+
+interface Season {
+    id: number;
+    startDate: string;
+    endDate: string;
+    currentMatchday: number;
+    winner: string | null;
+}
+
 export interface ApiResponse {
+    filters: Filters;
+    area: Area;
     competition: Competition;
+    season: Season;
     standings: Standings[];
 }
 
-interface StandingsState {
-    competition: Competition | null;
-    standings: TableEntry[];
+interface StandingsState extends ApiResponse {
     loading: boolean;
     error: string | null;
-}
+};
 
 const initialState: StandingsState = {
-    competition: null,
+    filters: {
+        season: '', // Matches Filters interface
+    },
+    area: {
+        id: 0,
+        name: '',
+        code: '',
+        flag: '',
+    },
+    competition: {
+        id: 0,
+        name: '',
+        code: '',
+        type: '',
+        emblem: '',
+    },
+    season: {
+        id: 0,
+        startDate: '',
+        endDate: '',
+        currentMatchday: 0,
+        winner: null,
+    },
     standings: [],
     loading: false,
-    error: null,
+    error: null,  
 };
 
 const standingsSlice = createSlice({
@@ -63,7 +108,14 @@ const standingsSlice = createSlice({
         },
         fetchStandingsSuccess(state, action: PayloadAction<ApiResponse>) {
             state.competition = action.payload.competition;
-            state.standings = action.payload.standings[0].table;
+            state.standings = [
+                {
+                  stage: action.payload.standings[0].stage,
+                  type: action.payload.standings[0].type,
+                  group: action.payload.standings[0].group,
+                  table: action.payload.standings[0].table,
+                },
+              ];
             state.loading = false;
         },
         fetchStandingsFailure(state, action: PayloadAction<string>) {
