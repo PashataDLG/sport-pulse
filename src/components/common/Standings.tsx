@@ -1,35 +1,126 @@
-import React, { useEffect } from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Box, Avatar, useMediaQuery } from '@mui/material';
-import { IoMdPodium } from "react-icons/io";
+import React from 'react';
+import {
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography,
+    Box,
+    Avatar,
+    useMediaQuery
+} from '@mui/material';
+import {IoMdPodium} from "react-icons/io";
 import theme from '../../theme/theme';
 import StyledBox from './Styledbox';
-import { useDispatch, useSelector } from 'react-redux';
-import { useQuery } from '@tanstack/react-query';
-import { fetchStandingsStart, fetchStandingsSuccess, fetchStandingsFailure, ApiResponse } from '../../store/slices/standingsSlice';
-import { RootState } from '../../store/store';
-import { fetchStandingsData } from '../../api/standingsApi';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
+import {useStandingsData} from "../../hooks/useStandingsData.ts";
+
 
 interface StandingsProps {
     page: 'team' | 'home';
 };
 
-const Standings: React.FC<StandingsProps> = ({ page }) => {
-    const dispatch = useDispatch();
-    const { competition, standings, loading, error } = useSelector((state: RootState) => state.standings);
+const Standings: React.FC<StandingsProps> = ({page}) => {
+    useStandingsData();
+    const { standings } = useSelector((state: RootState) => state.standings);
 
-    const { data, error: queryError } = useQuery<ApiResponse, Error>({
-        queryKey: ['standings'],
-        queryFn: fetchStandingsData,
-    });
+    console.log(standings);
 
-    useEffect(() => {
-        if (data) {
-            dispatch(fetchStandingsSuccess(data));
-        }
-        if (queryError) {
-            dispatch(fetchStandingsFailure(queryError.message));
-        }
-    }, [data, queryError, dispatch]);
+    const standingsData = [
+        {
+            rank: 1,
+            name: 'Liverpool',
+            points: 23,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 2,
+            name: 'Arsenal',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 3,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 4,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 5,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 6,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 7,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 8,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 9,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 10,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+        {
+            rank: 11,
+            name: 'Chelsea',
+            points: 22,
+            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
+            goalDiff: '+23',
+            playedGames: 10
+        },
+    ];
+
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -69,7 +160,7 @@ const Standings: React.FC<StandingsProps> = ({ page }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {standings.map((row: { rank: number; logo: string; name: string; playedGames: number; goalDiff: number; points: number }) => (
+                                {standingsData.map((row) => (
                                     <TableRow key={row.rank}>
                                         <TableCell>{row.rank}</TableCell>
                                         <TableCell>
@@ -120,7 +211,7 @@ const Standings: React.FC<StandingsProps> = ({ page }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {standingsData.map((row: { rank: boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.Key | null | undefined; logo: string | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; playedGames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; goalDiff: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; points: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
+                                {standingsData.map((row) => (
                                     <TableRow key={row.rank}>
                                         <TableCell>{row.rank}</TableCell>
                                         <TableCell>
@@ -146,16 +237,3 @@ const Standings: React.FC<StandingsProps> = ({ page }) => {
 export default Standings;
 
 
-// const standingsData = [
-//     { rank: 1, name: 'Liverpool', points: 23, logo: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 2, name: 'Arsenal', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 3, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 4, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 5, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 6, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 7, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 8, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 9, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 10, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-//     { rank: 11, name: 'Chelsea', points: 22, logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png', goalDiff: '+23', playedGames: 10 },
-// ];
