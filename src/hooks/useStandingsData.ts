@@ -1,27 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useQuery } from '@tanstack/react-query';
-import { fetchStandingsSuccess, fetchStandingsFailure, ApiResponse } from '../store/slices/standingsSlice';
-import { RootState } from '../store/store';
-import { fetchStandingsData } from '../api/standingsApi';
+import {useQuery} from '@tanstack/react-query';
+import {useDispatch} from 'react-redux';
+import {fetchStandingsData} from '../api/standingsApi';
+import {fetchStandingsSuccess, fetchStandingsFailure} from '../store/slices/standingsSlice';
+import type {ApiResponse} from '../store/slices/standingsSlice';
 
 export const useStandings = () => {
     const dispatch = useDispatch();
-    const { competition, standings, loading, error } = useSelector((state: RootState) => state.standings);
 
-    const { data, error: queryError, isLoading } = useQuery<ApiResponse, Error>({
+    const {data, error, isError, isSuccess} = useQuery<ApiResponse, Error>({
         queryKey: ['standings'],
         queryFn: fetchStandingsData,
-        onSuccess: (data) => {
-            dispatch(fetchStandingsSuccess(data));
-        },
-        onError: (error) => {
-            if (error instanceof Error) {
-                dispatch(fetchStandingsFailure(error.message));
-            } else {
-                dispatch(fetchStandingsFailure('An unknown error occurred'));
-            }
-        },
+        enabled: true,
     });
 
-    return { competition, standings, loading, error, isLoading };
+    if (isSuccess && data) {
+        dispatch(fetchStandingsSuccess(data));
+    } else if (isError && error) {
+        dispatch(fetchStandingsFailure((error as Error).message));
+    }
+
+    return {data, error};
 };
