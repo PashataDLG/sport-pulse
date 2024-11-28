@@ -18,6 +18,7 @@ import StyledBox from './Styledbox';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import {useStandingsData} from "../../hooks/useStandingsData.ts";
+import {TableEntry} from "../../store/slices/standingsSlice.ts";
 
 
 interface StandingsProps {
@@ -26,9 +27,14 @@ interface StandingsProps {
 
 const Standings: React.FC<StandingsProps> = ({page}) => {
     useStandingsData();
-    const { standings } = useSelector((state: RootState) => state.standings);
+    console.log('Standings component re-rendered');
+    const standingsData2: TableEntry[] = useSelector((state: RootState) => state.standings.table);
 
-    console.log(standings);
+    const table: TableEntry[] = standingsData2.standings[0].table;
+
+    table.map((team: TableEntry): void => {
+        console.log(team.team.shortName);
+    });
 
     const standingsData = [
         {
@@ -211,18 +217,19 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {standingsData.map((row) => (
-                                    <TableRow key={row.rank}>
-                                        <TableCell>{row.rank}</TableCell>
+                                {table.map((teamEntry: TableEntry) => (
+                                    // rank
+                                    <TableRow key={teamEntry.position}>
+                                        <TableCell>{teamEntry.position}</TableCell>
                                         <TableCell>
                                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
-                                                {row.name}
+                                                <Avatar src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2 }} />
+                                                {teamEntry.team.shortName}
                                             </Box>
                                         </TableCell>
-                                        <TableCell>{row.playedGames}</TableCell>
-                                        <TableCell>{row.goalDiff}</TableCell>
-                                        <TableCell>{row.points}</TableCell>
+                                        <TableCell>{teamEntry.playedGames}</TableCell>
+                                        <TableCell>{teamEntry.goalDifference}</TableCell>
+                                        <TableCell>{teamEntry.points}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
