@@ -1,16 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Team {
-    id: number;
-    name: string;
-    shortName: string;
-    tla: string;
-    crest: string;
-}
-
-interface TableEntry {
+export interface TableEntry {
     position: number;
-    team: Team;
+    team: { id: number; name: string; shortName: string; tla: string; crest: string };
     playedGames: number;
     form: string;
     won: number;
@@ -22,80 +14,16 @@ interface TableEntry {
     goalDifference: number;
 }
 
-interface Standings {
-    stage: string;
-    type: string;
-    group: string;
-    table: TableEntry[];
-}
-
-interface Filters {
-    season: string;
-}
-
-interface Area {
-    id: number;
-    name: string;
-    code: string;
-    flag: string;
-}
-
-interface Competition {
-    id: number;
-    name: string;
-    code: string;
-    type: string;
-    emblem: string;
-};
-
-interface Season {
-    id: number;
-    startDate: string;
-    endDate: string;
-    currentMatchday: number;
-    winner: string | null;
-}
-
-export interface ApiResponse {
-    filters: Filters;
-    area: Area;
-    competition: Competition;
-    season: Season;
-    standings: Standings[];
-}
-
-interface StandingsState extends ApiResponse {
+interface StandingsState {
+    table: TableEntry[]; // Only store the table data
     loading: boolean;
     error: string | null;
-};
+}
 
 const initialState: StandingsState = {
-    filters: {
-        season: '', // Matches Filters interface
-    },
-    area: {
-        id: 0,
-        name: '',
-        code: '',
-        flag: '',
-    },
-    competition: {
-        id: 0,
-        name: '',
-        code: '',
-        type: '',
-        emblem: '',
-    },
-    season: {
-        id: 0,
-        startDate: '',
-        endDate: '',
-        currentMatchday: 0,
-        winner: null,
-    },
-    standings: [],
+    table: [],
     loading: false,
-    error: null,  
+    error: null,
 };
 
 const standingsSlice = createSlice({
@@ -106,23 +34,15 @@ const standingsSlice = createSlice({
             state.loading = true;
             state.error = null;
         },
-        fetchStandingsSuccess(state, action: PayloadAction<ApiResponse>) {
-            state.competition = action.payload.competition;
-            state.standings = [
-                {
-                  stage: action.payload.standings[0].stage,
-                  type: action.payload.standings[0].type,
-                  group: action.payload.standings[0].group,
-                  table: action.payload.standings[0].table,
-                },
-              ];
+        fetchStandingsSuccess(state, action: PayloadAction<TableEntry[]>) {
+            state.table = action.payload; // Directly assign table data
             state.loading = false;
         },
         fetchStandingsFailure(state, action: PayloadAction<string>) {
             state.loading = false;
             state.error = action.payload;
         },
-    }
+    },
 });
 
 export const { fetchStandingsStart, fetchStandingsSuccess, fetchStandingsFailure } = standingsSlice.actions;
