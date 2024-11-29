@@ -27,106 +27,9 @@ interface StandingsProps {
 
 const Standings: React.FC<StandingsProps> = ({page}) => {
     useStandingsData();
-    console.log('Standings component re-rendered');
-    const standingsData2: TableEntry[] = useSelector((state: RootState) => state.standings.table);
+    const standingsData = useSelector((state: RootState) => state.standings.table);
 
-    const table: TableEntry[] = standingsData2.standings[0].table;
-
-    table.map((team: TableEntry): void => {
-        console.log(team.team.shortName);
-    });
-
-    const standingsData = [
-        {
-            rank: 1,
-            name: 'Liverpool',
-            points: 23,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 2,
-            name: 'Arsenal',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 3,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 4,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 5,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 6,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 7,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 8,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 9,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 10,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-        {
-            rank: 11,
-            name: 'Chelsea',
-            points: 22,
-            logo: 'https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png',
-            goalDiff: '+23',
-            playedGames: 10
-        },
-    ];
-
+    const table: TableEntry[] = standingsData.standings[0].table;
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -166,18 +69,18 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {standingsData.map((row) => (
-                                    <TableRow key={row.rank}>
-                                        <TableCell>{row.rank}</TableCell>
+                                {table.map((teamEntry) => (
+                                    <TableRow key={teamEntry.position}>
+                                        <TableCell>{teamEntry.position}</TableCell>
                                         <TableCell>
                                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Avatar src={row.logo} alt={row.name} sx={{ marginRight: 2 }} />
-                                                {row.name}
+                                                <Avatar src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2 }} />
+                                                {teamEntry.team.shortName}
                                             </Box>
                                         </TableCell>
-                                        <TableCell>{row.playedGames}</TableCell>
-                                        <TableCell>{row.goalDiff}</TableCell>
-                                        <TableCell>{row.points}</TableCell>
+                                        <TableCell>{teamEntry.playedGames}</TableCell>
+                                        <TableCell>{teamEntry.goalDifference}</TableCell>
+                                        <TableCell>{teamEntry.points}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -223,7 +126,8 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                                         <TableCell>{teamEntry.position}</TableCell>
                                         <TableCell>
                                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Avatar src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2 }} />
+                                                <Box component={'img'} src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2, width: '40px'}}/>
+
                                                 {teamEntry.team.shortName}
                                             </Box>
                                         </TableCell>
