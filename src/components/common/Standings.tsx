@@ -29,6 +29,7 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
     useStandingsData();
     const standingsData = useSelector((state: RootState) => state.standings.table);
 
+    // @ts-expect-error standings interface is not full
     const table: TableEntry[] = standingsData.standings[0].table;
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
