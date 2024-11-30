@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import standingsReducer from './slices/standingsSlice';
+import upcomingEventsReducer from './slices/upcomingEventsSlice';
 
 const store = configureStore({
     reducer: {
         standings: standingsReducer,
+        upcomingEvents: upcomingEventsReducer,
     }
 });
 
