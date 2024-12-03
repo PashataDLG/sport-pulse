@@ -1,8 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Area, Season } from './upcomingEventsSlice';
+
+interface Filters {
+    season: string;
+}
+
+interface Competition {
+    id: number;
+    name: string;
+    code: string;
+    type: string;
+    emblem: string;
+}
+
+interface Team {
+    id: number;
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string
+}
 
 export interface TableEntry {
     position: number;
-    team: { id: number; name: string; shortName: string; tla: string; crest: string };
+    team: Team;
     playedGames: number;
     form: string;
     won: number;
@@ -18,6 +39,14 @@ interface StandingsState {
     table: TableEntry[]; // Only store the table data
     loading: boolean;
     error: string | null;
+}
+
+export interface ApiResponse {
+    area: Area,
+    season: Season,
+    filters: Filters,
+    competition: Competition,
+    standings: StandingsState[],
 }
 
 const initialState: StandingsState = {
