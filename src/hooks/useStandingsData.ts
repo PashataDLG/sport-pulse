@@ -18,12 +18,12 @@ export const useStandingsData = () => {
 
     useEffect((): void => {
         if (isSuccess && data) {
-            dispatch(fetchStandingsSuccess(data));
+            dispatch(fetchStandingsSuccess(data?.standings[0].table));
             setEnabled(false);
         } else if (isError && error) {
             dispatch(fetchStandingsFailure((error as Error).message));
         }
-    }, [isSuccess, isError]);
+    }, [isSuccess, isError, data, error, dispatch]);
 
     return {data, error, isError, isSuccess};
 };
