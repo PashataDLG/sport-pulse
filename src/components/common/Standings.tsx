@@ -9,8 +9,7 @@ import {
     TableRow,
     Typography,
     Box,
-    Avatar,
-    useMediaQuery
+    useMediaQuery, Avatar
 } from '@mui/material';
 import {IoMdPodium} from "react-icons/io";
 import theme from '../../theme/theme';
@@ -23,14 +22,11 @@ import {TableEntry} from "../../store/slices/standingsSlice.ts";
 
 interface StandingsProps {
     page: 'team' | 'home';
-};
+}
 
-const Standings: React.FC<StandingsProps> = ({page}) => {
+const Standings: React.FC<StandingsProps> = ({page}: StandingsProps) => {
     useStandingsData();
-    const standingsData = useSelector((state: RootState) => state.standings.table);
-
-    // @ts-expect-error standings interface is not full
-    const table: TableEntry[] = standingsData.standings[0].table;
+    const table: TableEntry[] = useSelector((state: RootState): TableEntry[] => state.standings.table);
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -55,10 +51,11 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                         alignSelf: 'center',
                         fontSize: '2rem',
                     }}>
-                        <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                        <IoMdPodium size={30} style={{color: '#1976d2', marginRight: '10px'}}/>
                         Standings
                     </Typography>
-                    <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
+                    <TableContainer component={Paper}
+                                    sx={{maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px'}}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -74,8 +71,9 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                                     <TableRow key={teamEntry.position}>
                                         <TableCell>{teamEntry.position}</TableCell>
                                         <TableCell>
-                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Avatar src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2 }} />
+                                            <Box sx={{display: 'flex', alignItems: 'center'}}>
+                                                <Avatar src={teamEntry.team.crest} alt={teamEntry.team.shortName}
+                                                        sx={{marginRight: 2}}/>
                                                 {teamEntry.team.shortName}
                                             </Box>
                                         </TableCell>
@@ -106,10 +104,11 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                         alignSelf: 'center',
                         fontSize: '2rem',
                     }}>
-                        <IoMdPodium size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                        <IoMdPodium size={30} style={{color: '#1976d2', marginRight: '10px'}}/>
                         Standings
                     </Typography>
-                    <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
+                    <TableContainer component={Paper}
+                                    sx={{maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px'}}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -122,12 +121,13 @@ const Standings: React.FC<StandingsProps> = ({page}) => {
                             </TableHead>
                             <TableBody>
                                 {table.map((teamEntry: TableEntry) => (
-                                    // rank
                                     <TableRow key={teamEntry.position}>
                                         <TableCell>{teamEntry.position}</TableCell>
                                         <TableCell>
-                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Box component={'img'} src={teamEntry.team.crest} alt={teamEntry.team.shortName} sx={{ marginRight: 2, width: '40px'}}/>
+                                            <Box sx={{display: 'flex', alignItems: 'center'}}>
+                                                <Box component={'img'} src={teamEntry.team.crest}
+                                                     alt={teamEntry.team.shortName}
+                                                     sx={{marginRight: 2, width: '40px'}}/>
 
                                                 {teamEntry.team.shortName}
                                             </Box>
