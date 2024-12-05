@@ -1,9 +1,14 @@
 import React from 'react';
-import { Box, Typography, Avatar, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useMediaQuery, Theme, styled } from '@mui/material';
+import { Box, Typography, Avatar, Paper, Table, TableBody, TableCell, TableContainer, TableRow, useMediaQuery,} from '@mui/material';
 import { MdOutlineNextWeek } from "react-icons/md";
-import dateFormatter from '../../utils/dateFormatter';
+import {timeFormatter} from "../../utils/timeFormatter.ts";
 import theme from '../../theme/theme';
 import StyledBox from './Styledbox';
+import { useUpcomingEventsData} from "../../hooks/useUpcomingEventsData.ts";
+import {Match} from "../../store/slices/upcomingEventsSlice.ts";
+import {useSelector} from "react-redux";
+import {RootState} from '../../store/store';
+import {getTodayDate} from "../../utils/getTodayDate.ts";
 
 interface Event {
 	id: number;
@@ -18,11 +23,12 @@ interface UpcomingEventsProps {
 	page: 'team' | 'home';
 }
 
-interface StyledBoxProps {
-	page: 'team' | 'home';
-}
-
 const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
+	useUpcomingEventsData();
+	const matches: Match[] = useSelector((state: RootState): Match[] => state.upcomingEvents.matches);
+
+	const { displayDate } = getTodayDate();
+
 	const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
 	return (
@@ -78,7 +84,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												marginTop: '-30px'
 											}}>
 												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', fontFamily: 'Poppins' }}>
-													{dateFormatter(event.date)}
+													{displayDate}
 												</Typography>
 												<Box sx={{
 													display: 'flex',
@@ -137,8 +143,8 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 						<Table stickyHeader>
 
 							<TableBody>
-								{events.map((event) => (
-									<TableRow key={event.id}>
+								{matches.map((match) => (
+									<TableRow key={match.id}>
 										<TableCell>
 											<Box sx={{
 												display: 'flex',
@@ -147,8 +153,8 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												alignItems: 'center',
 												gap: '5px'
 											}}>
-												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' />
-												<Typography sx={{ fontFamily: 'Poppins' }}>{event.homeTeam}</Typography>
+												<Avatar src={match.homeTeam.crest}/>
+												<Typography sx={{ fontFamily: 'Poppins' }}>{match.homeTeam.shortName}</Typography>
 											</Box>
 										</TableCell>
 										<TableCell>
@@ -161,7 +167,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												marginTop: '-30px'
 											}}>
 												<Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', fontFamily: 'Roboto Mono' }}>
-													{dateFormatter(event.date)}
+													{displayDate}
 												</Typography>
 												<Box sx={{
 													display: 'flex',
@@ -170,7 +176,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 													gap: '10px',
 												}}>
 													<Typography sx={{ fontSize: '1.1rem', fontFamily: 'Roboto Mono' }}>
-														{event.time}
+														{timeFormatter(match.utcDate)}
 													</Typography>
 												</Box>
 											</Box>
@@ -183,8 +189,8 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, page }) => {
 												alignItems: 'center',
 												gap: '5px',
 											}}>
-												<Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png' />
-												<Typography sx={{ fontFamily: 'Poppins' }}>{event.awayTeam}</Typography>
+												<Avatar src={match.awayTeam.crest} />
+												<Typography sx={{ fontFamily: 'Poppins' }}>{match.awayTeam.shortName}</Typography>
 											</Box>
 										</TableCell>
 									</TableRow>
