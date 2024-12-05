@@ -83,7 +83,15 @@ export interface MatchesResponse {
     matches: Match[];
 }
 
-const initialState: MatchesResponse = {
+interface UpcomingEventsState {
+    filters: Filters;
+    resultSet: ResultSet;
+    competition: Competition;
+    matches: Match[];
+    error: string | null;
+}
+
+const initialState: UpcomingEventsState = {
     filters: {
         season: '',
     },
@@ -101,6 +109,7 @@ const initialState: MatchesResponse = {
         emblem: '',
     },
     matches: [],
+    error: null,
 };
 
 const upcomingEventsSlice = createSlice({
@@ -116,8 +125,9 @@ const upcomingEventsSlice = createSlice({
             state.competition = action.payload.competition;
             state.matches = action.payload.matches;
         },
-        fetchUpcomingEventsFailure(state: WritableDraft<MatchesResponse>,): void {
+        fetchUpcomingEventsFailure(state: WritableDraft<UpcomingEventsState>, action: PayloadAction<string>): void {
             state.matches = [];
+            state.error = action.payload;
         },
     },
 });
