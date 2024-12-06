@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { WritableDraft } from 'immer';
 
-interface Filters {
+export interface Filters {
     season: string;
 }
 
@@ -12,7 +12,7 @@ interface ResultSet {
     played: number;
 }
 
-interface Competition {
+export interface Competition {
     id: number;
     name: string;
     code: string;
@@ -29,8 +29,8 @@ export interface Area {
 
 export interface Season {
     id: number;
-    startDate: string; // ISO date string (e.g., "2024-08-16")
-    endDate: string;   // ISO date string (e.g., "2025-05-25")
+    startDate: string;
+    endDate: string;
     currentMatchday: number;
     winner: string | null;
 }
