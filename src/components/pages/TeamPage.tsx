@@ -9,14 +9,6 @@ import TeamNews from '../common/TeamNews';
 import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
-const teamUpcomingEvents = [
-    {id: 1, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12'},
-    {id: 2, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12'},
-    {id: 3, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12'},
-    {id: 4, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12'},
-    {id: 5, homeTeam: 'Liverpool', awayTeam: 'Chelsea', time: '21:00', date: '2022-12-12'},
-];
-
 const teamLiveEvents = [
     {
         id: 1,
@@ -76,7 +68,7 @@ const TeamPage = (): JSX.Element => {
             case 1:
                 return <LiveEvents events={teamLiveEvents} page="team"/>;
             case 2:
-                return <UpcomingEvents events={teamUpcomingEvents} page='team'/>;
+                return <UpcomingEvents page='team'/>;
             case 3:
                 return <Standings page="team"/>;
             default:
