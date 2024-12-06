@@ -49,16 +49,10 @@ export interface LiveMatchesResponse {
     filters: Filters;
     resultSet: ResultSet;
     matches: Match[];
-}
-
-interface State {
-    filters: Filters;
-    resultSet: ResultSet;
-    matches: Match[];
     error: string | null;
 }
 
-const initialState: State = {
+const initialState: LiveMatchesResponse = {
     filters: {
         dateFrom: '',
         dateTo: '',
@@ -80,12 +74,12 @@ const liveEventsSlice = createSlice({
     name: 'liveEvents',
     initialState,
     reducers: {
-        fetchLiveEventsSuccess(state: WritableDraft<State>, action: PayloadAction<State>): void {
+        fetchLiveEventsSuccess(state: WritableDraft<LiveMatchesResponse>, action: PayloadAction<LiveMatchesResponse>): void {
             state.filters = action.payload.filters;
             state.matches = action.payload.matches;
             state.resultSet = action.payload.resultSet;
         },
-        fetchLiveEventsFailure(state: WritableDraft<State>, action: PayloadAction<string>): void {
+        fetchLiveEventsFailure(state: WritableDraft<LiveMatchesResponse>, action: PayloadAction<string>): void {
             state.matches = [];
             state.error = action.payload;
         }
