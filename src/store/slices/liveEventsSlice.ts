@@ -29,7 +29,7 @@ interface Score {
     halfTime: ScoreDetail;
 }
 
-interface Match {
+export interface Match {
     area: Area;
     competition: Competition;
     season: Season;
