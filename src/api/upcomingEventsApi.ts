@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { getTodayDate} from "../utils/getTodayDate.ts";
+import { getDates} from "../utils/getDates.ts";
 
 export const fetchUpcomingEvents = async () => {
-    const { apiDate } = getTodayDate();
+    const { todayDate, next7DaysDate } = getDates();
 
     const response = await axios.get(
-        `https://api.football-data.org/v4/competitions/PL/matches?dateFrom=${apiDate}&dateTo=${apiDate}`,
+        `https://api.football-data.org/v4/competitions/PL/matches?dateFrom=${todayDate}&dateTo=${next7DaysDate}`,
         {
             headers: {
                 'X-Auth-Token': '2b592fd358af4ea9b527e71282c29c54',
