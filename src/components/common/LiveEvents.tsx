@@ -3,22 +3,22 @@ import { Box, Typography, Avatar, useMediaQuery, Table, TableContainer, TableBod
 import { CgMediaLive } from "react-icons/cg";
 import theme from '../../theme/theme';
 import StyledBox from './Styledbox';
-
-interface LiveEvent {
-    id: number;
-    homeTeam: string;
-    awayTeam: string;
-    homeTeamGoals: number;
-    awayTeamGoals: number;
-    time: string;
-}
+import { useLiveEventsData } from '../../hooks/useLiveEventsData';
+import { useSelector} from "react-redux";
+import {LiveMatchesResponse} from "../../store/slices/liveEventsSlice.ts";
+import {RootState} from "../../store/store.ts";
+import {Match} from "../../store/slices/liveEventsSlice.ts";
+import {timeFormatter} from "../../utils/timeFormatter.ts";
 
 interface LiveEventsProps {
-    events: LiveEvent[];
     page: 'team' | 'home';
 }
 
-const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
+const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
+    useLiveEventsData();
+
+    const liveMatches: LiveMatchesResponse = useSelector((state: RootState): LiveMatchesResponse => state.liveEvents);
+
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
@@ -49,7 +49,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
             <Table stickyHeader>
 
                 <TableBody>
-                    {events.map((event) => (
+                    {liveMatches.matches.map((event: Match) => (
                         <TableRow key={event.id}>
                             <TableCell>
                                 <Box sx={{
@@ -59,7 +59,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     alignItems: 'center',
                                     gap: '5px'
                                 }}>
-                                    <Avatar src='https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' />{event.homeTeam}
+                                    <Avatar src={event.homeTeam.crest} />{event.homeTeam.shortName}
                                 </Box>
                             </TableCell>
                             <TableCell>
@@ -72,7 +72,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     marginTop: '-30px'
                                 }}>
                                     <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>
-                                        {event.time}
+                                        {timeFormatter(event.utcDate)}
                                     </Typography>
                                     <Box sx={{
                                         display: 'flex',
@@ -81,13 +81,13 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                         gap: '10px',
                                     }}>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
-                                            {event.homeTeamGoals}
+                                            {event.score.fullTime.home}
                                         </Typography>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
                                             -
                                         </Typography>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
-                                            {event.awayTeamGoals}
+                                            {event.score.fullTime.away}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -100,7 +100,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     alignItems: 'center',
                                     gap: '5px',
                                 }}>
-                                    <Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png' />{event.awayTeam}
+                                    <Avatar src={event.awayTeam.crest} />{event.awayTeam.shortName}
                                 </Box>
                             </TableCell>
                         </TableRow>
@@ -134,7 +134,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
             <Table stickyHeader>
 
                 <TableBody>
-                    {events.map((event) => (
+                    {liveMatches.matches.map((event: Match) => (
                         <TableRow key={event.id}>
                             <TableCell>
                                 <Box sx={{
@@ -144,7 +144,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     alignItems: 'center',
                                     gap: '5px'
                                 }}>
-                                    <Avatar src='https://www.thesportsdb.com/images/media/team/badge/ar5tn91728915882.png' />{event.homeTeam}
+                                    <Avatar src={event.homeTeam.crest} />{event.homeTeam.shortName}
                                 </Box>
                             </TableCell>
                             <TableCell>
@@ -157,7 +157,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     marginTop: '-30px'
                                 }}>
                                     <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>
-                                        {event.time}
+                                        {timeFormatter(event.utcDate)}
                                     </Typography>
                                     <Box sx={{
                                         display: 'flex',
@@ -166,13 +166,13 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                         gap: '10px',
                                     }}>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
-                                            {event.homeTeamGoals}
+                                            {event.score.fullTime.home}
                                         </Typography>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
                                             -
                                         </Typography>
                                         <Typography sx={{ fontSize: '1.1rem' }}>
-                                            {event.awayTeamGoals}
+                                            {event.score.fullTime.away}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -185,7 +185,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ events, page }) => {
                                     alignItems: 'center',
                                     gap: '5px',
                                 }}>
-                                    <Avatar src='https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png' />{event.awayTeam}
+                                    <Avatar src={event.awayTeam.crest} />{event.awayTeam.shortName}
                                 </Box>
                             </TableCell>
                         </TableRow>
