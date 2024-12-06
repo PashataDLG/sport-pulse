@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {LiveMatchesResponse} from "../store/slices/liveEventsSlice.ts";
 
-export const fetchLiveEventsData = async (): Promise<LiveMatchesResponse> => {
-    const response = await axios.get(
+export const fetchLiveEventsData: () => Promise<LiveMatchesResponse> = async (): Promise<LiveMatchesResponse> => {
+    const response: AxiosResponse<LiveMatchesResponse> = await axios.get(
         'https://api.football-data.org/v4/matches?status=LIVE',
         {
             headers: {
