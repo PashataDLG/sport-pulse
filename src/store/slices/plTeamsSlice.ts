@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { Filters, Competition } from "./standingsSlice";
 import { Area, Season } from "./upcomingEventsSlice";
 
-interface Team {
+export interface Team {
     area: Area
     id: number,
     name: string,

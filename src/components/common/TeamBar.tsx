@@ -63,7 +63,7 @@ const TeamAppBar = (): JSX.Element => {
                             <Grid container spacing={1} justifyContent="r">
                                 {plTeams.teams.map((team) => (
                                     <Tooltip title={team.shortName} placement="bottom-start">
-                                        <Link to="/team-details">
+                                        <Link to={`/team-details/${team.id}`}>
                                             <Box
                                                 component="img"
                                                 src={team.crest}
