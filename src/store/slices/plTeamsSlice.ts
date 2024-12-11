@@ -16,7 +16,7 @@ interface Team {
     venue: string,
 }
 
-interface ApiResponse {
+export interface TeamsResponse {
     count: number,
     filters: Filters,
     competition: Competition,
@@ -24,7 +24,7 @@ interface ApiResponse {
     teams: Team[],
 }
 
-const initialState: ApiResponse = {
+const initialState: TeamsResponse = {
     count: 0,
     filters: {
         season: '',
@@ -50,7 +50,7 @@ const plTeams = createSlice({
     name: 'plTeams',
     initialState,
     reducers: {
-        fetchPlTeams(state: ApiResponse, action: PayloadAction<ApiResponse>) {
+        fetchPlTeams(state: TeamsResponse, action: PayloadAction<TeamsResponse>) {
             state.teams = action.payload.teams;
         },
     },
