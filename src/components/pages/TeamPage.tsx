@@ -7,55 +7,19 @@ import LiveEvents from '../common/LiveEvents';
 import Standings from '../common/Standings';
 import TeamNews from '../common/TeamNews';
 import {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
-
-const teamLiveEvents = [
-    {
-        id: 1,
-        homeTeam: 'Liverpool',
-        awayTeam: 'Arsenal',
-        scoreHomeTeam: 2,
-        scoreAwayTeam: 1,
-        time: '90:00',
-        homeTeamGoals: 2,
-        awayTeamGoals: 1
-    },
-    {
-        id: 2,
-        homeTeam: 'Liverpool',
-        awayTeam: 'Arsenal',
-        scoreHomeTeam: 2,
-        scoreAwayTeam: 1,
-        time: '90:00',
-        homeTeamGoals: 2,
-        awayTeamGoals: 1
-    },
-    {
-        id: 3,
-        homeTeam: 'Liverpool',
-        awayTeam: 'Arsenal',
-        scoreHomeTeam: 2,
-        scoreAwayTeam: 1,
-        time: '90:00',
-        homeTeamGoals: 2,
-        awayTeamGoals: 1
-    },
-    {
-        id: 4,
-        homeTeam: 'Liverpool',
-        awayTeam: 'Arsenal',
-        scoreHomeTeam: 2,
-        scoreAwayTeam: 1,
-        time: '90:00',
-        homeTeamGoals: 2,
-        awayTeamGoals: 1
-    },
-];
+import {useLocation, useParams} from 'react-router-dom';
+import {Team, TeamsResponse} from "../../store/slices/plTeamsSlice.ts";
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/store.ts";
 
 const TeamPage = (): JSX.Element => {
     const isMobile = useMediaQuery('(max-width:600px)');
     const location = useLocation();
     const {selectedButton, setSelectedButton} = useTeamPageContext();
+    const { teamId } = useParams<{teamId: string}>();
+    const plTeams: TeamsResponse = useSelector((state: RootState): TeamsResponse => state.plTeams);
+
+    const team: Team = plTeams.teams.find((team: Team) => team.id === parseInt(teamId ?? '0')) as Team;
 
     useEffect(() => {
         setSelectedButton(0);
@@ -66,7 +30,7 @@ const TeamPage = (): JSX.Element => {
             case 0:
                 return <TeamNews/>;
             case 1:
-                return <LiveEvents events={teamLiveEvents} page="team"/>;
+                return <LiveEvents page="team"/>;
             case 2:
                 return <UpcomingEvents page='team'/>;
             case 3:
@@ -86,7 +50,7 @@ const TeamPage = (): JSX.Element => {
                     gap: '10px',
                     padding: '0'
                 }}>
-                    <TeamBanner/>
+                    <TeamBanner team={team}/>
                     <TeamPageBar/>
                     <Box
                         sx={{flexGrow: 1, width: '100%', display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
@@ -101,7 +65,7 @@ const TeamPage = (): JSX.Element => {
                     gap: '10px',
                     padding: '0'
                 }}>
-                    <TeamBanner/>
+                    <TeamBanner team={team}/>
                     <TeamPageBar/>
                     <Box
                         sx={{flexGrow: 1, width: '100%', display: 'flex', justifyContent: 'center', marginTop: '20px'}}>

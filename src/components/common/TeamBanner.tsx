@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material"
 import { MdStadium } from "react-icons/md"
 import { useMediaQuery } from '@mui/material';
+import { Team } from "../../store/slices/plTeamsSlice";
 
-const TeamBanner = () => {
+const TeamBanner = ({ team }: {team: Team}) => {
     const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
@@ -42,8 +43,8 @@ const TeamBanner = () => {
                     }}
                 >
                     <img
-                        src="https://sportal365images.com/process/smp-images-production/assets/team/logo/92-Liverpool-logo.png"
-                        alt="Liverpool Logo"
+                        src={team.crest}
+                        alt={team.shortName}
                         style={{ width: isMobile ? '100px' : '140px', height: 'auto', marginTop: isMobile ? '10px' : '20px' }}
                     />
                 </Box>
@@ -62,11 +63,11 @@ const TeamBanner = () => {
                     }}
                 >
                     <Typography variant="h5" sx={{ fontWeight: 'bold', fontSize: '2rem', fontFamily: 'Montserrat', bottom: '10px', }}>
-                        Liverpool
+                        {team.name}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center', } }}>
-                        <img src="https://sportal365images.com/process/smp-images-production/assets/country/flag/15-England-flag.png" alt="England Flag" style={{ width: '20px', height: 'auto' }} />
-                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>England</Typography>
+                        <img src={team.area.flag} alt="England Flag" style={{ width: '20px', height: 'auto' }} />
+                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>{team.area.name}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center', } }}>
                         <img src="https://sportal365images.com/process/smp-images-production/assets/15082022/87501e33-d82d-4098-854c-9e50259d7c6f.png" alt="Premier League Icon" style={{ width: '20px', height: 'auto' }} />
@@ -74,7 +75,7 @@ const TeamBanner = () => {
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <MdStadium size={20} />
-                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>"Anfield" | Liverpool</Typography>
+                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>{team.venue}</Typography>
                     </Box>
                 </Box>
             </Box>
