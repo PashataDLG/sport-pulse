@@ -50,11 +50,11 @@ const plTeams = createSlice({
     name: 'plTeams',
     initialState,
     reducers: {
-        fetchPlTeams(state: TeamsResponse, action: PayloadAction<TeamsResponse>) {
+        fetchPlTeamsSuccess(state: TeamsResponse, action: PayloadAction<TeamsResponse>) {
             state.teams = action.payload.teams;
         },
     },
 });
 
-export const { fetchPlTeams } = plTeams.actions;
+export const { fetchPlTeamsSuccess } = plTeams.actions;
 export default plTeams.reducer;
