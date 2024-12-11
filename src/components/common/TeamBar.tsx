@@ -2,17 +2,16 @@ import { AppBar, Box, Grid, Toolbar, useMediaQuery } from "@mui/material";
 import Tooltip from '@mui/material/Tooltip';
 import theme from "../../theme/theme";
 import { Link } from 'react-router-dom';
+import {usePlTeamsData} from "../../hooks/usePlTeamsData.ts";
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/store.ts";
+import { TeamsResponse} from "../../store/slices/plTeamsSlice.ts";
 
-interface Team {
-    id: number;
-    crest: string;
-}
+const TeamAppBar = (): JSX.Element => {
+    usePlTeamsData();
 
-interface teams {
-    teams: Team[];
-}
+    const plTeams: TeamsResponse = useSelector((state: RootState): TeamsResponse => state.plTeams);
 
-const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
@@ -27,8 +26,8 @@ const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
                 }}>
                     <Toolbar sx={{ overflowX: 'auto', whiteSpace: 'nowrap', height: '100px' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                            {teams.map((team) => (
-                                <Tooltip key={team.id} title="Liverpool" placement="bottom-start">
+                            {plTeams.teams.map((team) => (
+                                <Tooltip key={team.id} title={team.shortName} placement="bottom-start">
                                     <Box
                                         component="img"
                                         src={team.crest}
@@ -62,8 +61,8 @@ const TeamAppBar: React.FC<teams> = ({ teams }): JSX.Element => {
                     }}>
                         <Toolbar>
                             <Grid container spacing={1} justifyContent="r">
-                                {teams.map((team) => (
-                                    <Tooltip title="Liverpool" placement="bottom-start">
+                                {plTeams.teams.map((team) => (
+                                    <Tooltip title={team.shortName} placement="bottom-start">
                                         <Link to="/team-details">
                                             <Box
                                                 component="img"
