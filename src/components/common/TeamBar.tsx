@@ -27,10 +27,10 @@ const TeamAppBar = (): JSX.Element => {
                     <Toolbar sx={{ overflowX: 'auto', whiteSpace: 'nowrap', height: '100px' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             {plTeams.teams.map((team) => (
-                                <Tooltip key={team.id} title={team.shortName} placement="bottom-start">
+                                <Tooltip key={team.idTeam} title={team.strTeam} placement="bottom-start">
                                     <Box
                                         component="img"
-                                        src={team.crest}
+                                        src={team.strBadge}
                                         alt="team crest"
                                         sx={{
                                             width: 38,
@@ -62,11 +62,11 @@ const TeamAppBar = (): JSX.Element => {
                         <Toolbar>
                             <Grid container spacing={1} justifyContent="r">
                                 {plTeams.teams.map((team) => (
-                                    <Tooltip title={team.shortName} placement="bottom-start">
-                                        <Link to={`/team-details/${team.id}`}>
+                                    <Tooltip title={team.strTeam} placement="bottom-start">
+                                        <Link to={`/team-details/${team.idTeam}`}>
                                             <Box
                                                 component="img"
-                                                src={team.crest}
+                                                src={team.strBadge}
                                                 alt="team crest"
                                                 sx={{
                                                     width: 38,
