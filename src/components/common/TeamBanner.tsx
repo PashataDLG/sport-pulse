@@ -1,9 +1,9 @@
-import { Box, Typography } from "@mui/material"
-import { MdStadium } from "react-icons/md"
-import { useMediaQuery } from '@mui/material';
-import { Team } from "../../store/slices/plTeamsSlice";
+import React from 'react';
+import { Box, Typography, useMediaQuery } from '@mui/material';
+import { MdStadium } from 'react-icons/md';
+import { Team } from '../../store/slices/plTeamsSlice';
 
-const TeamBanner = ({ team }: {team: Team}) => {
+const TeamBanner = ({ team }: { team: Team }) => {
     const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
@@ -11,15 +11,15 @@ const TeamBanner = ({ team }: {team: Team}) => {
             sx={{
                 width: '90%',
                 height: { xs: '50vh', sm: '50vh', md: '50vh', lg: '45vh' },
-                bgcolor: 'inherit',
                 display: 'flex',
                 marginTop: { lg: '20px' },
                 flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' },
-                border: { lg: '1px solid #f3f3f3' },
                 flexGrow: 1,
+                bgcolor: 'inherit', // Ensure background is inherited
+                border: 'none', // Remove any border
             }}
         >
-            {/* Left-sided box!*/}
+            {/* Left-sided box */}
             <Box
                 sx={{
                     width: '100%',
@@ -38,13 +38,12 @@ const TeamBanner = ({ team }: {team: Team}) => {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        bgcolor: 'inherit',
                         paddingTop: { xs: '0px', sm: '0px', md: '60px', lg: '0px' },
                     }}
                 >
                     <img
-                        src={team.crest}
-                        alt={team.shortName}
+                        src={team.strBadge}
+                        alt={team.strTeamShort}
                         style={{ width: isMobile ? '100px' : '140px', height: 'auto', marginTop: isMobile ? '10px' : '20px' }}
                     />
                 </Box>
@@ -57,48 +56,56 @@ const TeamBanner = ({ team }: {team: Team}) => {
                         justifyContent: 'center',
                         flexDirection: 'column',
                         alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' },
-                        bgcolor: 'inherit',
                         gap: '5px',
                         flexGrow: 1,
                     }}
                 >
-                    <Typography variant="h5" sx={{ fontWeight: 'bold', fontSize: '2rem', fontFamily: 'Montserrat', bottom: '10px', }}>
-                        {team.name}
+                    <Typography variant="h5" sx={{ fontWeight: 'bold', fontSize: '2rem', fontFamily: 'Montserrat', bottom: '10px' }}>
+                        {team.strTeam}
                     </Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center', } }}>
-                        <img src={team.area.flag} alt="England Flag" style={{ width: '20px', height: 'auto' }} />
-                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>{team.area.name}</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center' } }}>
+                        <img src='https://sportal365images.com/process/smp-images-production/assets/country/flag/15-England-flag.png' alt="England Flag" style={{ width: '20px', height: 'auto' }} />
+                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>England</Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center', } }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: { xs: 'center' } }}>
                         <img src="https://sportal365images.com/process/smp-images-production/assets/15082022/87501e33-d82d-4098-854c-9e50259d7c6f.png" alt="Premier League Icon" style={{ width: '20px', height: 'auto' }} />
                         <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>Premier League</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <MdStadium size={20} />
-                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>{team.venue}</Typography>
+                        <Typography sx={{ fontFamily: 'Montserrat', fontSize: '1rem', fontWeight: 'bold' }}>{team.strStadium}</Typography>
                     </Box>
                 </Box>
             </Box>
-            {/* Right-sided image box!*/}
+            {/* Right-sided description box */}
             <Box
                 sx={{
-                    width: { xs: '100%', md: '100%', lg: '55%' },
+                    width: { xs: '100%', md: '100%', lg: '80%' },
                     height: '100%',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    padding: { xs: '20px 0px', md: '0' },
+                    padding: { xs: '20px 0px', md: '0', lg: '10px 0px 0px 0px' },
                     flexGrow: 1,
                 }}
             >
-                <Box
-                    component="img"
-                    src="/public/2024-25-squad-photo-30092024-full.jpg"
-                    sx={{ width: { xs: '100%', md: '90%', lg: '100%' }, height: { lg: '100%' }, }}
-                />
+                <Typography
+                    sx={{
+                        fontFamily: 'Montserrat',
+                        fontSize: '0.7rem',
+                        textAlign: 'justify',
+                        padding: '20px',
+                        borderRadius: '8px',
+                        bgcolor: 'inherit',
+                        overflowY: 'auto',
+                        maxHeight: '100%',
+                    }}
+                >
+                    {team.strDescriptionEN}
+                </Typography>
             </Box>
         </Box>
-    )
-}
+    );
+};
 
 export default TeamBanner;

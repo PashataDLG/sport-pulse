@@ -18,8 +18,7 @@ const TeamPage = (): JSX.Element => {
     const {selectedButton, setSelectedButton} = useTeamPageContext();
     const { teamId } = useParams<{teamId: string}>();
     const plTeams: TeamsResponse = useSelector((state: RootState): TeamsResponse => state.plTeams);
-
-    const team: Team = plTeams.teams.find((team: Team) => team.id === parseInt(teamId ?? '0')) as Team;
+    const team: Team = plTeams.teams.find((team: Team) => Number(team.idTeam) === parseInt(teamId ?? '0')) as Team;
 
     useEffect(() => {
         setSelectedButton(0);
