@@ -1,49 +1,31 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { Filters, Competition } from "./standingsSlice";
-import { Area, Season } from "./upcomingEventsSlice";
-
-export interface Team {
-    area: Area
-    id: number,
-    name: string,
-    shortName: string,
-    tla: string,
-    crest: string,
-    address: string,
-    website: string,
-    founded: 1886,
-    clubColors: string,
-    venue: string,
-}
 
 export interface TeamsResponse {
-    count: number,
-    filters: Filters,
-    competition: Competition,
-    season: Season,
-    teams: Team[],
+    teams: Team[]
 }
 
-const initialState: TeamsResponse = {
-    count: 0,
-    filters: {
-        season: '',
-    },
-    competition: {
-        id: 0,
-        name: '',
-        code: '',
-        type: '',
-        emblem: '',
-    },
-    season: {
-        id: 0,
-        startDate: '',
-        endDate: '',
-        currentMatchday: 0,
-        winner: '',
-    },
+export interface Team {
+    idTeam: string,
+    idAPIfootball: string,
+    strTeam: string,
+    strTeamAlternate: string,
+    strTeamShort: string,
+    strStadium: string,
+    strDescriptionEN: string,
+    strCounter: string,
+    strBadge: string,
+}
+
+interface TeamsState {
+    teams: Team[];
+    loading: boolean;
+    error: string | null;
+}
+
+const initialState: TeamsState = {
     teams: [],
+    loading: false,
+    error: null,
 };
 
 const plTeams = createSlice({
