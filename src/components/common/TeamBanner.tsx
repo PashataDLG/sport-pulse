@@ -92,7 +92,7 @@ const TeamBanner = ({ team }: { team: Team }) => {
                 <Typography
                     sx={{
                         fontFamily: 'Montserrat',
-                        fontSize: '0.7rem',
+                        fontSize: '0.9rem',
                         textAlign: 'justify',
                         padding: '20px',
                         borderRadius: '8px',
