@@ -29,7 +29,7 @@ interface Player {
     name: string;
     position: string;
     dateOfBirth: string;
-    countryOfBirth: string;
+    nationality: string;
 }
 
 const initialState: TeamPlayersResponse = {
