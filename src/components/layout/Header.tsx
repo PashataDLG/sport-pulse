@@ -93,32 +93,34 @@ const Header = (): JSX.Element => {
                                     Events
                                 </Typography>
                             </Button>
-                            <Button
-                                color="inherit"
-                                sx={{
-                                    borderRadius: '20px',
-                                    padding: '10px 20px',
-                                    transition: 'color 0.4s',
-                                    backgroundColor: 'inherit',
-                                    color: '#00A4CC',
-                                    '&:hover': {
-                                        color: '#046b94',
-                                    },
-                                }}
-                            >
-                                <MdScoreboard size={22} style={{ color: 'inherit' }} />
-                                <Typography
+                            <Link to="/live-events">
+                                <Button
+                                    color="inherit"
                                     sx={{
-                                        marginLeft: '10px',
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: 'bolder',
-                                        fontSize: '1.2rem',
-                                        color: 'inherit',
+                                        borderRadius: '20px',
+                                        padding: '10px 20px',
+                                        transition: 'color 0.4s',
+                                        backgroundColor: 'inherit',
+                                        color: '#00A4CC',
+                                        '&:hover': {
+                                            color: '#046b94',
+                                        },
                                     }}
                                 >
-                                    Live Score
-                                </Typography>
-                            </Button>
+                                    <MdScoreboard size={22} style={{ color: 'inherit' }} />
+                                    <Typography
+                                        sx={{
+                                            marginLeft: '10px',
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: 'bolder',
+                                            fontSize: '1.2rem',
+                                            color: 'inherit',
+                                        }}
+                                    >
+                                        Live Events
+                                    </Typography>
+                                </Button>
+                            </Link>
                         </Box>
                     )}
                 </Toolbar>
