@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, Avatar, useMediaQuery, Table, TableContainer, TableBody, TableRow, TableCell, Paper } from '@mui/material';
-import { CgMediaLive } from "react-icons/cg";
 import theme from '../../theme/theme';
 import StyledBox from './Styledbox';
 import { useLiveEventsData } from '../../hooks/useLiveEventsData';
@@ -9,6 +8,7 @@ import { LiveMatchesResponse } from "../../store/slices/liveEventsSlice.ts";
 import { RootState } from "../../store/store.ts";
 import { Match } from "../../store/slices/liveEventsSlice.ts";
 import { timeFormatter } from "../../utils/timeFormatter.ts";
+import { MdScoreboard } from 'react-icons/md';
 
 interface LiveEventsProps {
     page: 'team' | 'home';
@@ -25,7 +25,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
         isMobile ? (
             <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper', width: '100%' }}>
                 <Typography variant="h4" gutterBottom sx={{ fontFamily: 'Montserrat', fontWeight: 'bold', textAlign: 'center', color: '#1976d2', borderRadius: '20px', marginBottom: '20px', marginTop: '0px', width: '100%', alignSelf: 'center', fontSize: '2rem' }}>
-                    <CgMediaLive size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                    <MdScoreboard size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
                     Live Events
                 </Typography>
                 {liveMatches.matches.length > 0 ? (
@@ -76,7 +76,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
         ) : (
             <StyledBox page={page} sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
                 <Typography variant="h4" gutterBottom sx={{ fontFamily: 'Montserrat', fontWeight: 'bold', color: '#1976d2', textAlign: 'center', backgroundColor: 'inherit', borderRadius: '20px', marginBottom: '20px', width: '100%', alignSelf: 'center', fontSize: '2rem' }}>
-                    <CgMediaLive size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
+                    <MdScoreboard size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
                     Live Events
                 </Typography>
                 {liveMatches.matches.length > 0 ? (
