@@ -14,8 +14,10 @@ import store from "./store/store.ts";
 
 const queryClient = new QueryClient();
 
-const domain: string = process.env.REACT_APP_AUTH0_DOMAIN as string;
-const clientId: string = process.env.REACT_APP_AUTH0_CLIENT_ID as string;
+const domain: string = import.meta.env.VITE_AUTH0_DOMAIN as string;
+const clientId: string = import.meta.env.VITE_AUTH0_CLIENT_ID as string;
+
+console.log(domain, clientId);
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
