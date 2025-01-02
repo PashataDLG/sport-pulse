@@ -7,11 +7,15 @@ import { IoHome } from "react-icons/io5";
 import { MdEmojiEvents } from "react-icons/md";
 import { MdScoreboard } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { IoIosLogIn } from "react-icons/io";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = (): JSX.Element => {
     const { handleDrawerToggle } = useAppContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
+
+    const { loginWithRedirect } = useAuth0()
 
     return (
         <>
@@ -121,6 +125,33 @@ const Header = (): JSX.Element => {
                                     </Typography>
                                 </Button>
                             </Link>
+                                <Button
+                                    color="inherit"
+                                    sx={{
+                                        borderRadius: '20px',
+                                        padding: '10px 20px',
+                                        transition: 'color 0.4s',
+                                        backgroundColor: 'inherit',
+                                        color: '#00A4CC',
+                                        '&:hover': {
+                                            color: '#046b94',
+                                        },
+                                    }}
+                                    onClick={() => loginWithRedirect()}
+                                >
+                                    <IoIosLogIn size={22} style={{ color: 'inherit' }} />
+                                    <Typography
+                                        sx={{
+                                            marginLeft: '10px',
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: 'bolder',
+                                            fontSize: '1.2rem',
+                                            color: 'inherit',
+                                        }}
+                                    >
+                                        Login
+                                    </Typography>
+                                </Button>
                         </Box>
                     )}
                 </Toolbar>
