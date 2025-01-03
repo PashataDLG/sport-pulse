@@ -40,7 +40,7 @@ const Banner: React.FC = (): JSX.Element => {
                             mb: 1
                         }}
                     >
-                        The best sport <br /> event website!
+                        The ultimate Premier League event hub!<br />Your go-to source for the English Top Tier!
                     </Typography>
                     <Typography component="p" sx={{
                         textAlign: 'center',
@@ -50,7 +50,7 @@ const Banner: React.FC = (): JSX.Element => {
                         zIndex: 2,
                         mb: 2
                     }}>
-                        Experience the thrill of live sports events <br /> and stay updated with real-time scores and updates. <br /> Join us and be part of the excitement!
+                        Experience the electrifying action of the English Premier League.<br />Stay informed with real-time scores and updates.<br />Join us and immerse yourself in the excitement!
                     </Typography>
                     <Button color='inherit' sx={{
                         backgroundColor: '#00A4CC',
