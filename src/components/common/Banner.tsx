@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Banner: React.FC = (): JSX.Element => {
 
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     return (
         <Parallax
@@ -54,9 +54,9 @@ const Banner: React.FC = (): JSX.Element => {
                         zIndex: 2,
                         mb: 2
                     }}>
-                        Experience the electrifying action of the English Premier League.<br />Stay informed with real-time scores and updates.<br />Join us and immerse yourself in the excitement!
+                        Experience the electrifying action of the English Premier League.<br />Stay informed with real-time scores and updates.<br />{!isAuthenticated && 'Join us and immerse yourself in the excitement!'}
                     </Typography>
-                    <Button color='inherit' sx={{
+                   {!isAuthenticated &&  <Button color='inherit' sx={{
                         backgroundColor: '#00A4CC',
                         '&:hover': {
                             backgroundColor: '#007BAC',
@@ -76,7 +76,7 @@ const Banner: React.FC = (): JSX.Element => {
                     onClick={() => loginWithRedirect()}
                     >
                         JOIN NOW!
-                    </Button>
+                    </Button>}
                 </Box>
             </div>
         </Parallax>
