@@ -14,6 +14,7 @@ export const fetchPlayersData: (teamId: number) => Promise<TeamPlayersResponse> 
 
         return response.data;
     } catch (error) {
+        console.error('Error fetching players data:', error);
         throw new Error('Failed to fetch live events data');
     }
 };
