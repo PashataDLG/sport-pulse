@@ -21,7 +21,7 @@ export const useStandingsData = () => {
             dispatch(fetchStandingsSuccess(data?.standings[0].table));
             setEnabled(false);
         } else if (isError && error) {
-            dispatch(fetchStandingsFailure((error as Error).message));
+            dispatch(fetchStandingsFailure(error.message));
         }
     }, [isSuccess, isError, data, error, dispatch]);
 
