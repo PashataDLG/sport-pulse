@@ -9,6 +9,7 @@ import { RootState } from "../../store/store.ts";
 import { Match } from "../../store/slices/liveEventsSlice.ts";
 import { timeFormatter } from "../../utils/timeFormatter.ts";
 import { MdScoreboard } from 'react-icons/md';
+import BlinkingDot from './BlinkingDot';
 
 interface LiveEventsProps {
     page: 'team' | 'home';
@@ -93,7 +94,7 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
                                         <TableCell>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', padding: '20px', marginTop: '-30px' }}>
                                                 <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>
-                                                    {timeFormatter(event.utcDate)}
+                                                    <BlinkingDot />
                                                 </Typography>
                                                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
                                                     <Typography sx={{ fontSize: '1.1rem' }}>
