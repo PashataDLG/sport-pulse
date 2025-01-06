@@ -1,7 +1,11 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Parallax } from "react-parallax";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Banner: React.FC = (): JSX.Element => {
+
+    const { loginWithRedirect } = useAuth0();
+
     return (
         <Parallax
             bgImage='https://t3.ftcdn.net/jpg/06/07/07/80/360_F_607078002_yMGIjR7oCK8fvvR8qD8hZ5EsXK7V8M7I.jpg'
@@ -68,7 +72,9 @@ const Banner: React.FC = (): JSX.Element => {
                         fontWeight: 'bold',
                         fontSize: '1.1rem',
                         mt: 1
-                    }}>
+                    }}
+                    onClick={() => loginWithRedirect()}
+                    >
                         JOIN NOW!
                     </Button>
                 </Box>
