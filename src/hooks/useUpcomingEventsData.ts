@@ -24,7 +24,7 @@ export const useUpcomingEventsData = () => {
             dispatch(fetchUpcomingEventsSuccess(data));
             setEnabled(false);
         } else if (isError && error) {
-            dispatch(fetchUpcomingEventsFailure((error as Error).message));
+            dispatch(fetchUpcomingEventsFailure(error.message));
         }
     }, [isSuccess, data, error, isError]);
 };
