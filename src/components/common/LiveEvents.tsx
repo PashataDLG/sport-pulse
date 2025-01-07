@@ -18,7 +18,11 @@ interface LiveEventsProps {
 const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
     useLiveEventsData();
 
-    const liveMatches: LiveMatchesResponse = useSelector((state: RootState): LiveMatchesResponse => state.liveEvents);
+    const liveEvents: LiveMatchesResponse = useSelector((state: RootState): LiveMatchesResponse => state.liveEvents);
+
+    const sortedLiveEvents = liveEvents.matches.sort((a: Match, b: Match) => {
+        return a.homeTeam.name.localeCompare(b.homeTeam.name, undefined, { sensitivity: 'base' });
+    });
 
     const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -29,11 +33,11 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
                     <MdScoreboard size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
                     Live Events
                 </Typography>
-                {liveMatches.matches.length > 0 ? (
+                {sortedLiveEvents.length > 0 ? (
                     <TableContainer component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
                         <Table stickyHeader>
                             <TableBody>
-                                {liveMatches.matches.map((event: Match) => (
+                                {sortedLiveEvents.map((event: Match) => (
                                     <TableRow key={event.id}>
                                         <TableCell>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '5px' }}>
@@ -80,11 +84,11 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ page }) => {
                     <MdScoreboard size={30} style={{ color: '#1976d2', marginRight: '10px' }} />
                     Live Events
                 </Typography>
-                {liveMatches.matches.length > 0 ? (
+                {sortedLiveEvents.length > 0 ? (
                     <Box component={Paper} sx={{ maxHeight: 500, maxWidth: '100%', overflow: 'auto', borderRadius: '12px' }}>
                         <Table stickyHeader>
                             <TableBody>
-                                {liveMatches.matches.map((event: Match) => (
+                                {sortedLiveEvents.map((event: Match) => (
                                     <TableRow key={event.id}>
                                         <TableCell>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '5px' }}>
